@@ -25,12 +25,12 @@
 	<div class="bg"><image class="img" src="${webcontext}/image/logo.png"></image></div>
 	<div class="list">
 		<ul>
-		<li><a href="${webcontext}/myplate/buildMenu">首页</a></li>
-		<li><a href="${webcontext}/myplate/toInforPage">用户信息</a></li>
-		<li><a href="${webcontext}/myplate/toFoodConfPage">食谱配置</a></li>
-		<li><a href="${webcontext}/myplate/toNutrEvaluatePage">营养评价</a></li>
-		<li><a href="${webcontext}/myplate/toBmiTestPage">体质评测</a></li>
-		<li><a href="${webcontext}/myplate/toKnowledgeExpanPage">知识拓展</a></li>
+		<li><a href="${webcontext}/buildMenu">首页</a></li>
+		<li><a href="${webcontext}/toInforPage">用户信息</a></li>
+		<li><a href="${webcontext}/toFoodConfPage">食谱配置</a></li>
+		<li><a href="${webcontext}/toNutrEvaluatePage">营养评价</a></li>
+		<li><a href="${webcontext}/toBmiTestPage">体质评测</a></li>
+		<li><a href="${webcontext}/toKnowledgeExpanPage">知识拓展</a></li>
 		</ul>
 	</div>
 </div>

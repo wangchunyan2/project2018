@@ -6,13 +6,20 @@
     height:600px;
     float: right;
 }
-.mt-intro-section{
-	width: 80%;
+.content-detail{
+	width: 85%;
+    height: 550px;
     border-top: 3px solid #fe6e4c;
-    background-color: white;
+    background-color: #ffffff;
     margin-bottom: 40px;
     padding: 20px 20px;
+    display: block;
+    margin-right: auto;
     margin-left: 23px;
+}
+.mt-intro-section{
+	padding: 15px 19px;
+    margin-left: 18px;
 }
 .bmi_img{
 	width: 54%;
@@ -21,11 +28,14 @@
     float: left;
 }
 .pull-left{
-	 float: left!important;
+	float: left;
+    width: 161px;
+    height: 110px;
+    margin: -10px;
 }
 .text{
-	margin-left: 20px;
-    margin-top: 16px;
+	margin-left: -4px;
+    margin-top: 10px;
     text-align: left;
     font-size: 15.5px;
 }

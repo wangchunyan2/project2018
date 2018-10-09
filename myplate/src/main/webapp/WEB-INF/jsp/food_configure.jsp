@@ -22,9 +22,84 @@
 	<div class="content-header">
 		<h4 class="content-header-text">请选择体力活力水平</h4>
 	</div>
-</div>
+	<div class="content-container">
+		<div class="row">
+			<div class="row-col">
+				<label class="row-label">
+					<div class="row-label-radio">
+					<input type="radio" value="1" name="power_level" id="power_level1">&nbsp;轻活力水平&nbsp;&nbsp;
+					<img class="mt-tip-icon" style="width: 16px;height：16px;"src="${webcontext}/image/question.png">
+					</div>
+				</label>
+			</div>
+		</div>
+		
+		<div class="row" style="margin-top: 38px;margin-left: -120px;">
+			<div class="row-col">
+				<label class="row-label">
+					<div class="row-label-radio">
+					<input type="radio" value="1" name="power_level" id="power_level2">&nbsp;中活力水平&nbsp;&nbsp;
+					<img class="mt-tip-icon" style="width: 16px;height：16px;"src="${webcontext}/image/question.png">
+					</div>
+				</label>
+			</div>
+		</div> 
+		
+		 <div class="row" style="margin-top: 76px;margin-left: -120px;">
+			<div class="row-col">
+				<label class="row-label">
+					<div class="row-label-radio">
+					<input type="radio" value="1" name="power_level" id="power_level3">&nbsp;重活力水平&nbsp;&nbsp;
+					<img class="mt-tip-icon" style="width: 16px;height：16px;"src="${webcontext}/image/question.png">
+					</div>
+				</label>
+				
+			</div>
+		</div>
+		</div>
+		
+		<div class="content-header">
+			<h4 class="content-header-text">基础能量需求</h4>
+		</div>
+	
+		<div class="content-container" style="height: 160px;">
+			<div class="row energy-row">
+				<div class="row-left">基础代谢:</div>
+				<div class="row-center">1478</div>
+				<div class="row-right">kcal/day</div>
+			</div>
+			
+			<div class="row energy-row">
+				<div class="row-left">能量摄入水平(推荐):</div>
+				<div class="row-center">1478</div>
+				<div class="row-right">kcal</div>
+			</div>
+			
+			<div class="row energy-row">
+				<div class="row-left">早餐供能:</div>
+				<div class="row-center">14</div>
+				<div class="row-right">kcal</div>
+			</div>
+			
+			<div class="row energy-row">
+				<div class="row-left">午餐供能:</div>
+				<div class="row-center">8</div>
+				<div class="row-right">kcal</div>
+			</div>
+			
+			<div class="row energy-row">
+				<div class="row-left">晚餐供能:</div>
+				<div class="row-center">147118</div>
+				<div class="row-right">kcal</div>
+			</div>
+		</div>
+		
+		<div class="content-container">
+			<input type="button" class="content-next" value="下一步">
+		</div>
+	
 </div>
 
-
+</div>
 </body>
 </html>

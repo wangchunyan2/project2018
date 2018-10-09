@@ -6,3 +6,178 @@
     height:600px;
     float: right;
 }
+.content-detail{
+	width: 85%;
+    height: 550px;
+    border-top: 3px solid #fe6e4c;
+    background-color: #ffffff;
+    margin-bottom: 40px;
+    padding: 20px 20px;
+    display: block;
+    margin-right: auto;
+    margin-left: 23px;
+}
+.content-header{
+	margin: 20px 0 20px 0;
+}
+.content-header-text{
+	color: white;
+    background-color: #ff7f55;
+    padding: 5px 5px 5px 20px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    width: 128px;
+    margin-left: 10px;
+    height: 20px;
+}
+.content-meals{
+	width: 100%;
+    margin: 0 auto;
+    height: 140px;
+}
+.row{
+	margin-top: 5px;
+    margin-left: 100px;
+    float: left;
+    width: 106%;
+}
+.row-left{
+	width: 20%;
+    float: left;
+}
+.row-center{
+    float: left;
+}
+.content-input{
+	width: 60px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    height: 16px;
+}
+.content-energy{
+	margin: 20px 0 20px 0;
+}
+.start-test{
+	margin-top: 20px;
+    width: 110px;
+    color: #fff;
+    background-color: #ff6d4b;
+    border-color: #ff6d4b;
+    padding: 6px 12px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 14px;
+    margin-left: 123px;
+    float: left;
+}
+.content-left{
+	width:50%;
+	float: left;
+	height: 350px;
+}
+.content-right{
+	width: 50%;
+    float: right;
+    height: 350px;
+}
+.content-top{
+	weight: 100%;
+	height: 350px;
+}
+.content-below{
+	height: 200px;
+}
+
+ table.content-table {
+      font-family: verdana,arial,sans-serif;
+     font-size:11px;
+     color:#333333;
+     border-width: 1px;
+      border-color: #666666;
+      border-collapse: collapse;
+ }
+ table.content-table td {
+     border-width: 1px;
+     padding: 8px;
+     border-style: solid;
+     border-color: #666666;
+     background-color: #ffffff;
+ }
+.test-result-message{
+	padding: 1px 452px 8px 22px;
+}
+.test-result-graph{
+   	position: relative;
+    height: 125px;
+}
+.test-result-graph-text{
+	display: inline-block;
+    width: 120px;
+    height: 120px;
+    padding: 5px;
+    font-size: 10px;
+    margin-bottom: 30px;
+    vertical-align: middle;
+    float: left;
+}
+.test-result-progress{
+	overflow: hidden;
+    height: 38px;
+    margin-bottom: 20px;
+    margin-top: 30px;
+    margin-left: 30px;
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#f5f5f5), to(#f9f9f9));
+    background-image: -webkit-linear-gradient(top, #f5f5f5, #f9f9f9);
+    background-image: -o-linear-gradient(top, #f5f5f5, #f9f9f9);
+    background-image: linear-gradient(to bottom, #f5f5f5, #f9f9f9);
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff5f5f5', endColorstr='#fff9f9f9', GradientType=0);
+    -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 10px;
+    width: 408px;
+    margin-right: 39px;
+}
+.test-result-progress .bar{
+	 width: 0%;  
+     height: 100%;  
+     color: #ffffff;  
+     float: left;  
+     font-size: 12px;  
+     text-align: center;  
+     align-items: center;  
+     display: flex;  
+     justify-content: center;  
+     text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);  
+     background-color: #0e90d2;  
+     background-image: -moz-linear-gradient(top, #149bdf, #0480be);  
+     background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#149bdf), to(#0480be));  
+     background-image: -webkit-linear-gradient(top, #149bdf, #0480be);  
+     background-image: -o-linear-gradient(top, #149bdf, #0480be);  
+     background-image: linear-gradient(to bottom, #ff7f55, #ff7f55);  
+     background-repeat: repeat-x;  
+     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff149bdf', endColorstr='#ff0480be', GradientType=0);  
+     -webkit-box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);  
+     -moz-box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);  
+     box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);  
+     -webkit-box-sizing: border-box;  
+     -moz-box-sizing: border-box;  
+     box-sizing: border-box;  
+     -webkit-transition: width 0.6s ease;  
+     -moz-transition: width 0.6s ease;  
+     -o-transition: width 0.6s ease;  
+     transition: width 0.6s ease;  
+	
+}
+
+

@@ -4,7 +4,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping(value="/myplate")
 public class MyplateController {
 	//首页
 	@RequestMapping("/buildMenu")
@@ -26,6 +25,7 @@ public class MyplateController {
 	public String toGuidePage(){
 		return "/food_configure";
 	}
+	//营养配置页面
 	@RequestMapping("/toNutrEvaluatePage")
 	public String toWhrPage(){
 		return "/nutr_evaluate";

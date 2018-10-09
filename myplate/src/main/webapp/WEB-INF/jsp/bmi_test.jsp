@@ -18,6 +18,7 @@
 </head>
 <body>
 <div class="content">
+<div class="content-detail">
 	 <div class="mt-intro-section center-block">
 		<div class="pull-left">
 		<img alt="" class="bmi_img" src="${webcontext}/image/icn_bmi.png"></div>
@@ -73,7 +74,7 @@
 	</div>
 	<!-- <span>评价标准来自：中华人民共和国卫生行业标准，成人体重判定，2013。<br>
 		理想体重参考：世界卫生组织(WHO)标准体重计算方法。</span> -->
-	
+	</div>
 </div>
 </body>
 </html>

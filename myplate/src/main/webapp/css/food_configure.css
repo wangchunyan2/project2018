@@ -26,7 +26,46 @@
     padding: 5px 5px 5px 20px;
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
-    width: 161px;
+    width: 154px;
     margin-left: 10px;
     height: 20px;
+}
+.content-container{
+	width: 80%;
+    margin: 0 auto;
+    height:125px;
+}
+.row{
+	margin-right: -15px;
+    margin-left: 37px;
+    float: left;
+}
+.energy-row{
+	height: 30px;
+    line-height: 30px;
+    width: 100%;
+}
+.row-left{
+	width: 20%;
+	float: left;
+}
+.row-center{
+	width: 40%;
+	float: left;
+}
+.row-right{
+	width: 18%;
+    float: left;
+}
+.content-next{
+	margin-top: 20px;
+    width: 210px;
+    color: #fff;
+    background-color: #ff6d4b;
+    border-color: #ff6d4b;
+    padding: 6px 12px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 14px;
 }
