@@ -31,6 +31,7 @@ public class LoginController {
 			if(StringUtils.isEmpty(u.getUserName())){
 				throw new Exception("用户不存在！");
 			}else{
+				request.getSession().setAttribute("userName",u.getUserName());
 				return "/buildMenu";
 			}
 		}
