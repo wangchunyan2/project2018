@@ -16,19 +16,8 @@ import java.util.Map;
  * version 1.0
  */
 public class UserRoleAuthorizationInterceptor implements HandlerInterceptor {
-    //不拦截"/loginForm"和"/login"请求
-    private static final String[] IGNORE_URI = {"/toRegisterPage", "/userLogin", "/css/", "/js/", "/image/", "/jsp/"};
 
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object o) throws Exception {
-
-        String requestUri = request.getRequestURI();
-        String contextPath = request.getContextPath();
-        String url = requestUri.substring(contextPath.length());
-        for (String s : IGNORE_URI) {
-            if (url.contains(s)) {
-                return true;
-            }
-        }
         String username = (String) request.getSession().getAttribute("userName");
         if(null == username){
             request.getRequestDispatcher("/WEB-INF/jsp/index.jsp").forward(request, response);
