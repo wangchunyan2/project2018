@@ -43,18 +43,11 @@ http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
 		<property name="prefix" value="/WEB-INF/jsp/" />
 		<property name="suffix" value=".jsp" />
 	</bean>
-<!-- 配置拦截器 -->  
- <!-- <mvc:interceptors>  
-      <mvc:interceptor>  
-          <mvc:mapping path="/**"/>  
-          <bean class="ams.filter.LoginHandlerIntercepter"></bean>  
-      </mvc:interceptor>  
- </mvc:interceptors> -->
-
+<!-- 配置拦截器 -->
 	<mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/**"/>
-			<mvc:exclude-mapping path="login/userLogin"/>
+			<mvc:exclude-mapping path="/myplate/"/>
 			<bean class="com.myplate.controller.UserRoleAuthorizationInterceptor"/>
 		</mvc:interceptor>
 	</mvc:interceptors>
