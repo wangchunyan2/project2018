@@ -47,7 +47,7 @@ http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
 	<mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/**"/>
-			<mvc:exclude-mapping path="/myplate/"/>
+			<mvc:exclude-mapping path="/myplate"/>
 			<bean class="com.myplate.controller.UserRoleAuthorizationInterceptor"/>
 		</mvc:interceptor>
 	</mvc:interceptors>

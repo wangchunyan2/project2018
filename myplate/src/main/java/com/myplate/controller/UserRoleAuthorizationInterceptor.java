@@ -17,7 +17,7 @@ import java.util.Map;
  */
 public class UserRoleAuthorizationInterceptor implements HandlerInterceptor {
     //不拦截"/loginForm"和"/login"请求
-    private static final String[] IGNORE_URI = {"/toRegisterPage", "/userLogin"};
+    private static final String[] IGNORE_URI = {"/toRegisterPage", "/userLogin", "/css/", "/js/", "/image/", "/jsp/"};
 
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object o) throws Exception {
 
