@@ -35,11 +35,11 @@
 					<option value="0">请选择</option> 
 					<option value="1">轻活力水平</option> 
 					<option value="2">中活力水平</option> 
-					<option value="2">重活力水平</option> 
+					<option value="3">重活力水平</option> 
 				</select>
 		</div>
 		<div class="row">
-				<input type="button" class="content-button" value="查询">
+				<input type="button" class="content-button" id="query" value="查询">
 			</div>
 	<div class="content-result">
 		<table class="content-table" align="center">
@@ -61,6 +61,32 @@
 	</div> 
 </div>
 </div>
-
 </body>
+<script type="text/javascript">
+$(function(){
+	$("#query").click(function(){
+		var breakfast = $("#breakfast").val().trim();
+		var lunch = $("#lunch").val().trim();
+		var dinner = $("#dinner").val().trim();
+		var other = $("#other").val().trim();
+		if(breakfast=='' || lunch=='' || dinner=='' || other=='' ){
+			alert('营养素摄入输入不合法！');
+			return;
+		}
+		var kcal =  parseInt(breakfast)+parseInt(lunch)+parseInt(dinner)+parseInt(other);
+		$('#result-kcal').html(kcal); 
+		$.ajax({
+            type: "post",
+            url: "${webcontext}/XXX=",
+            dataType: "json",
+            async:false,
+            success: function(data){
+            	//渲染基础能量需求
+            	//var bar = document.getElementById("bar");
+        		//bar.style.setProperty('width','10%');
+        		//$('#bar').html("10%"); 
+            }
+         });
+	});
+});
 </html>
