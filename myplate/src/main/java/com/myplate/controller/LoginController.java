@@ -34,6 +34,7 @@ public class LoginController {
 					throw new Exception("用户名或密码为空！");
 				}else if(u.getUserName().equals(userName) && u.getPwd().equals(pwd)){
 					request.getSession().setAttribute("userName",u.getUserName());
+					request.getSession().setAttribute("id",u.getId());
 					if("admin".equals(userName)){
 						return "/admin";
 					}
@@ -88,5 +89,4 @@ public class LoginController {
 		}
 		return "/register";
 	}
-
 }
