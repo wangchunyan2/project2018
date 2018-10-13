@@ -30,6 +30,13 @@ public class MyplateController {
 	public String toWhrPage(){
 		return "/nutr_evaluate";
 	}
+	
+	//管理员页面
+	@RequestMapping("/toAdminPage")
+	public String toAdminPage(){
+		return "/admin";
+	}
+	
 	@RequestMapping("/toKnowledgeExpanPage")
 	public String toAboutUsPage(){
 		return "/knowledge_expan";
