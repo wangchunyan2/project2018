@@ -36,7 +36,7 @@
 		<url-pattern>*.js</url-pattern>
 		<url-pattern>*.css</url-pattern>
 		<url-pattern>/assets/*"</url-pattern>
-		<url-pattern>/images/*</url-pattern>
+		<url-pattern>/image/*</url-pattern>
 	</servlet-mapping>
 	<!-- Spring MVC servlet -->
 	<servlet>

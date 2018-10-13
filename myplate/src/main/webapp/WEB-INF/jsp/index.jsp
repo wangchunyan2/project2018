@@ -40,6 +40,7 @@
 					<input type="password" name="password" id="password"></span>
 			</div>
 		</li>
+		<li>${error_msg}</li>
 	</ul> 
 	<div class="mt10">
 	<input type="submit" class="button mr10" id ="login" value="登录"> 

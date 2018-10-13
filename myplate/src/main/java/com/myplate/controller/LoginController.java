@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.websocket.server.PathParam;
 
+import com.myplate.utils.MyPlateException;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,25 +23,39 @@ public class LoginController {
 	@Autowired
 	private IUserService userService;
 	private Logger log = Logger.getLogger(LoginController.class);
-	
+
 	@RequestMapping("/userLogin")
-	public String login(HttpServletRequest request,Model model)throws Exception{
-		String userName = request.getParameter("userName");
-		if("admin".equals(userName)){
-			return "/admin";
-		}
-		if(!StringUtils.isEmpty(userName)){
+	public String login(HttpServletRequest request,Model model){
+		try {
+			String userName = request.getParameter("userName");
+			String pwd = request.getParameter("password");
 			User u = userService.getUserByUserName(userName);
-			if(StringUtils.isEmpty(u.getUserName())){
-				throw new Exception("用户不存在！");
-			}else{
-				request.getSession().setAttribute("userName",u.getUserName());
-				return "/buildMenu";
-			}
+				if(StringUtils.isEmpty(u.getUserName()) ||StringUtils.isEmpty(u.getPwd()) ){
+					throw new Exception("用户名或密码为空！");
+				}else if(u.getUserName().equals(userName) && u.getPwd().equals(pwd)){
+					request.getSession().setAttribute("userName",u.getUserName());
+					if("admin".equals(userName)){
+						return "/admin";
+					}
+					return "/buildMenu";
+				}else{
+					throw new Exception("用户名或密码错误！");
+				}
+		} catch (Exception e) {
+			log.error("登录异常",e);
+			request.setAttribute("error_msg",e.getMessage());
+			e.printStackTrace();
 		}
-		return "/login";
-		
+		return "/index";
 	}
+
+
+
+
+
+
+
+
 	@RequestMapping(value="/validateUser",method=RequestMethod.POST)
 	@ResponseBody
 	public boolean validateUser(HttpServletRequest request){
@@ -67,9 +82,6 @@ public class LoginController {
 	@RequestMapping("/register")
 	public String register(HttpSession httpSession,String userName,String password){
 		try {
-			if("admin".equals(userName)){
-				return "/admin";
-			}
 			if(!StringUtils.isEmpty(userName)&& !StringUtils.isEmpty(password)){
 				User user = new User();
 				user.setUserName(userName);
