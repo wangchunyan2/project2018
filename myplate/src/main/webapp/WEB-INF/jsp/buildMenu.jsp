@@ -41,7 +41,7 @@ margin-top: 40px;
  <div class="container buildMenuCon">
 	  <div class="main_banner">
         <ul class="slider1">
-            <li><img src="${webcontext}/image/diet3.jpg" /></li>
+            <li><img src="${webcontext}/image/diet.png" /></li>
             <li><img src="${webcontext}/image/diet5.jpg" /></li>
         </ul>
     </div>
