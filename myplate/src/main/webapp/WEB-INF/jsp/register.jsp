@@ -85,16 +85,16 @@ $(function(){
 	});
 	
 	$("#register").click(function(){
-		var username = $("#userName").val();
-		var password = $("#password").val();
-		var comformPwd = $("#comformPwd").val();
-        if(username == null){
+		var username = $("#userName").val().trim();
+		var password = $("#password").val().trim();
+		var comformPwd = $("#comformPwd").val().trim();
+        if(!username){
             $('#emptyValidator').html("用户名不能为空！");
             return false;
         }
-        debugger
+        //debugger
         if(  username == 'admin'){
-            $('#emptyValidator').html("用户名不能注册admin！");
+            $('#emptyValidator').html("不能注册admin账号！");
             return false;
         }
 		 if(!password){
@@ -119,13 +119,9 @@ $(function(){
             		console.log("success:"+data);
             		$("#form_id").attr("action","${webcontext}/login/register");
                		$("#form_id").submit();
+            	}else{
+            		alert("该账号已存在！");
             	}
-           	 /* if(!data){
-           		 $('#emptyValidator').html("用户已存在！"); 
-           		 return false;
-           	 }else if(data){
-           		
-           	 } */
             },
             error:function(data,type, err){
    	         console.log("ajax错误类型："+type);

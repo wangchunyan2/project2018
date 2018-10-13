@@ -28,30 +28,30 @@
 		<div class="row">
 			<div class="row-left">早餐摄入量：</div>
 			<div class="row-center">
-			<input type="text" class="content-input">&nbsp;&nbsp;kcal</div>
+			<input type="text" class="content-input" id="breakfast">&nbsp;&nbsp;kcal</div>
 		</div>
 		
 		<div class="row">
 			<div class="row-left">午餐摄入量：</div>
 			<div class="row-center">
-			<input type="text" class="content-input">&nbsp;&nbsp;kcal</div>
+			<input type="text" class="content-input" id="lunch">&nbsp;&nbsp;kcal</div>
 		</div>
 		
 		<div class="row">
 			<div class="row-left">晚餐摄入量：</div>
 			<div class="row-center">
-			<input type="text" class="content-input">&nbsp;&nbsp;kcal</div>
+			<input type="text" class="content-input" id="dinner">&nbsp;&nbsp;kcal</div>
 		</div>
 		
 		<div class="row">
 			<div class="row-left">其&nbsp;&nbsp;&nbsp;&nbsp;他：</div>
 			<div class="row-center">
-			<input type="text" class="content-input">&nbsp;&nbsp;kcal</div>
+			<input type="text" class="content-input" id="other">&nbsp;&nbsp;kcal</div>
 		</div>
 	</div>
 		
 	<div class="content-meals" style="height: 60px;">
-		<input type="button" class="start-test" value="开始测评">
+		<input type="button" class="start-test" id="start-test" value="开始测评">
 	</div>
 </div>
 <div class="content-right">
@@ -72,13 +72,14 @@
 </div>
 </div>
 	<div class="content-below">
-			<p class="test-result-message" style="margin-top: 70px;">&nbsp;&nbsp;&nbsp;您的膳食摄入总量较适宜，今日总能量摄入为2090千卡。</p>
+			<p class="test-result-message" style="margin-top: 70px;">&nbsp;&nbsp;&nbsp;您的膳食摄入总量较适宜，今日总能量摄入为
+				<span id="result-kcal"></span>千卡。</p>
 		<div class="test-result-graph">
 			<div>
 				<div class="test-result-graph-text">推荐摄入量<br>2400kcal</div>
 			</div>
 			<div class="test-result-progress">  
-    		<span class="bar" style="width: 40%;">40%</span>  
+    		<span class="bar" id="bar"></span>  
  			</div> 
 		</div>
 	</div>
@@ -86,4 +87,32 @@
 </div>
 </div>
 </body>
+<script type="text/javascript">
+$(function(){
+	$("#start-test").click(function(){
+		var breakfast = $("#breakfast").val().trim();
+		var lunch = $("#lunch").val().trim();
+		var dinner = $("#dinner").val().trim();
+		var other = $("#other").val().trim();
+		if(breakfast=='' || lunch=='' || dinner=='' || other=='' ){
+			alert('营养素摄入输入不合法！');
+			return;
+		}
+		var kcal =  parseInt(breakfast)+parseInt(lunch)+parseInt(dinner)+parseInt(other);
+		$('#result-kcal').html(kcal); 
+		$.ajax({
+            type: "post",
+            url: "${webcontext}/XXX=",
+            dataType: "json",
+            async:false,
+            success: function(data){
+            	//渲染基础能量需求
+            	//var bar = document.getElementById("bar");
+        		//bar.style.setProperty('width','10%');
+        		//$('#bar').html("10%"); 
+            }
+         });
+	});
+});
+</script>
 </html>

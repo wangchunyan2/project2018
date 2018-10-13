@@ -57,16 +57,16 @@ public class LoginController {
 			if(!StringUtils.isEmpty(username)){
 				User u = userService.getUserByUserName(username);
 				if(u == null){
-					return false;
-				}else{
 					return true;
+				}else{
+					return false;
 				}
 			}
 		} catch (Exception e) {
 			log.error("validateUser error",e);
 			e.printStackTrace();
 		}
-		return true;
+		return false;
 	}
 	@RequestMapping("/toRegisterPage")
 	public String toRegisterPage(HttpSession httpSession,String username,String password){
