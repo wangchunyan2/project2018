@@ -31,7 +31,7 @@
 			但它仍然不能代替健康的饮食。通过合理平衡的膳食和身体锻炼来改善人们的健康状况，减少主要慢性疾病的发病危险</p>
 		</div>
 		<div class="content-image">
-			<img alt="" src="${webcontext}/image/diet.png">
+			<img alt="" src="${webcontext}/image/knowledge.jpg">
 		</div>
 	</div>
 </div>

@@ -58,8 +58,10 @@
 	float: left;
 }
 .input-text{
-	width: 45px;
-    height: 19px;
+	width: 61px;
+    height: 24px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
 }
 .mt-test{
 	margin-left: -42px;
@@ -78,33 +80,31 @@
 	margin-top: 89px;
 	padding-top: 2px;
 }
-.test-result-detail{
-	width: 500px;
-    height: 100px;
-    margin: 20px auto;
-    padding: 0px;
+.label-left{
+	width: 20%;
     float: left;
-    margin-top: 0px;
 }
-.test-standar{
-	
+.label-right{
+    float: left;
 }
-table{
-	border-spacing: 0;
-    border-collapse: collapse;
+.test-result-detail{
+	width: auto;
+    height: 100px;
+    float: initial;
+    padding: 10px 10px 10px 10px;
 }
-.table-standar{
-	
+.test-result-row{
+	float: left;
+    width: 70%;
+    padding: 2px 0px 0px 200px;
 }
 .table-bordered{
-	border-top: 2px solid #fe6e4c;
-	border: 1px solid #ddd;
-	width: 80%;
-	border-spacing: 1;
-   /*  border-collapse: collapse; */
-    max-width: 100%;
-    margin-bottom: 20px;
+	border-collapse: collapse;
+    width: 95%;
 }
+.table-bordered td{
+    border: 1px solid #ddd;
+ }
 p{
 	margin-top: 90px;
     float: left;

@@ -13,7 +13,6 @@
 <c:set var="webcontext" value="${pageContext.request.contextPath}" />
 <link type="text/css" rel="stylesheet" href="${webcontext}/css/bmi_test.css"></link>
 <script type="text/javascript" src="${webcontext}/js/jquery.min.js"></script>
-
 <title>膳食营养评价系统myplate</title>
 </head>
 <body>
@@ -32,18 +31,18 @@
 		<div class="mt-detail-content">
 		<div class="row">
 		<label>性别：</label>
-		<label><input type="radio" name="sex" value="male" style="">男</label>
-		<label><input type="radio" name="sex" value="female" style="">女</label>
+		<label><input type="radio" name="sex" value="male" checked="checked">男</label>
+		<label><input type="radio" name="sex" value="female">女</label>
 		</div>
 		<div class="row" style="margin-top:40px;margin-left: -133px;">
 			<div>
-				<label>身高:</label>
-				<label><input type="text" name="height" class="input-text"></label>
+				<label>身高:&nbsp;</label>
+				<label><input type="text" name="height" id="height-input" class="input-text"></label>
 				<label>&nbsp;cm</label>
-				<label>&nbsp;&nbsp;体重:</label>
-				<label><input type="text" name="weight" class="input-text">&nbsp;kg</label>
+				<label>&nbsp;&nbsp;&nbsp;&nbsp;体重:&nbsp;</label>
+				<label><input type="text" name="weight" id="weight-input" class="input-text">&nbsp;kg</label>
 			</div>
-			<div class="mt-test"><input type="button" class="mt-test-button" value="测评"></div>
+			<div class="mt-test"><input type="button" class="mt-test-button" id="test-button" value="测评"></div>
 		</div>
 		</div>
 	</div>
@@ -51,26 +50,39 @@
 	<div class="test-result">
 		<h4 class="mt-detail-header">测评结果</h4>
 		<div class="test-result-detail">
-			<div class="weight-index"style="margin-left: -8px;"><span>您的体重指数：100.0</span></div>
-			<div class="weight-value" style="margin-left: -16px;"><span>您的体重情况：肥胖</span></div>
-			<div class="ideal-weight"><span>您的理想体重：18.0kg</span></div>
+			<div class="test-result-row">
+			<label>
+				<div class="label-left">您的体重指数：</div>
+				<div class="label-right"><span id="weight-index"></span></div>
+			</label>
+			</div>
+			<div class="test-result-row">
+			<label>
+			<div class="label-left">您的体重情况：</div>
+			<div class="label-right"><span id="weight-info"></span></div>
+			</label></div>
+			
+			<div class="test-result-row">
+			<label>
+			<div class="label-left">您的理想体重：</div>
+			<div class="label-right"><span id="ideal-weight"></span></div></label>
+			</div>
+			
 		</div>
 	</div>
 	<!-- 评价标准 -->
 	<div class="test-standar">
-		<div class="table-standar">
-		<p class="text-standar">评价标准</p>
 			<table class="table-bordered">
-				<tbody>
+			 <thead>
+		     	<tr><th colspan="2"><font color="#ff7f55">评价标准</font></th></tr>
+		  	</thead>
+		  	<tbody align="center">
 				<tr><td>小于18.5</td><td>体重过低</td></tr>
 				<tr><td>18.5~23.9</td><td>正常</td></tr>
 				<tr><td>24.0~27.9</td><td>超重</td></tr>
 				<tr><td>大于28</td><td>肥胖</td></tr>
-				</tbody>
+		  	</tbody>
 			</table>
-		</div>
-		
-		
 	</div>
 	<!-- <span>评价标准来自：中华人民共和国卫生行业标准，成人体重判定，2013。<br>
 		理想体重参考：世界卫生组织(WHO)标准体重计算方法。</span> -->
@@ -78,3 +90,37 @@
 </div>
 </body>
 </html>
+<script type="text/javascript">
+$(function(){
+	$("#test-button").click(function(){
+		var height = $("#height-input").val().trim();
+		var weight = $("#weight-input").val().trim();
+		if(height=='' || weight==''){
+			alert('身高体重不合法！');
+			return;
+		}
+		
+		var sex = $('input:radio:checked').val();
+		var bmi= weight/(height/100*height/100);
+		$('#weight-index').html(bmi.toFixed(2));
+		if(bmi<18.5){
+			$('#weight-info').html("体重过低");
+		}else if(bmi>=18.5 && bmi<=23.9){
+			$('#weight-info').html("正常");
+		}else if(bmi>=24.0 && bmi<=27.9){
+			$('#weight-info').html("超重");
+		}else{
+			$('#weight-info').html("肥胖");
+		}
+		if(sex=='male'){
+			var idealWeight = (height-80)*0.7;
+			$('#ideal-weight').html(idealWeight.toFixed(2));
+		}else if(sex=='female'){
+			var idealWeight = (height-80)*0.6;
+			$('#ideal-weight').html(idealWeight.toFixed(2));
+		}
+		  
+	});
+	
+});
+</script>

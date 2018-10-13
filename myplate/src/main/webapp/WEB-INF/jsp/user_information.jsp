@@ -26,7 +26,7 @@
 			<div class="row">
 			<div class="row-label">
 				<label class="content-name">昵称：</label>
-				<label><input type="name" class="content-input"></label>
+				<label><input type="text" class="content-input"></label>
 				<label class="content-lable" style="margin-left: 100px;">性别：</label>
 				<label class="content-lable">
 				<input type="radio" name="sex">男</label>
