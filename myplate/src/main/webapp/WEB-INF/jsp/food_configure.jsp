@@ -27,8 +27,8 @@
 			<div class="row-col">
 				<label class="row-label">
 					<div class="row-label-radio">
-					<input type="radio" value="1" name="power_level" id="power_level1">&nbsp;轻活力水平&nbsp;&nbsp;
-					<img class="mt-tip-icon" style="width: 16px;height：16px;"src="${webcontext}/image/question.png">
+					<input type="radio" value="1" name="power_level" id="power_level1" checked="checked">&nbsp;轻活力水平&nbsp;&nbsp;
+					<img class="mt-tip-icon" src="${webcontext}/image/question.png">
 					</div>
 				</label>
 			</div>
@@ -39,7 +39,7 @@
 				<label class="row-label">
 					<div class="row-label-radio">
 					<input type="radio" value="1" name="power_level" id="power_level2">&nbsp;中活力水平&nbsp;&nbsp;
-					<img class="mt-tip-icon" style="width: 16px;height：16px;"src="${webcontext}/image/question.png">
+					<img class="mt-tip-icon" src="${webcontext}/image/question.png">
 					</div>
 				</label>
 			</div>
@@ -50,7 +50,7 @@
 				<label class="row-label">
 					<div class="row-label-radio">
 					<input type="radio" value="1" name="power_level" id="power_level3">&nbsp;重活力水平&nbsp;&nbsp;
-					<img class="mt-tip-icon" style="width: 16px;height：16px;"src="${webcontext}/image/question.png">
+					<img class="mt-tip-icon" src="${webcontext}/image/question.png">
 					</div>
 				</label>
 				
@@ -65,37 +65,37 @@
 		<div class="content-container" style="height: 160px;">
 			<div class="row energy-row">
 				<div class="row-left">基础代谢:</div>
-				<div class="row-center">1478</div>
+				<div class="row-center" id="base-meta"></div>
 				<div class="row-right">kcal/day</div>
 			</div>
 			
 			<div class="row energy-row">
 				<div class="row-left">能量摄入水平(推荐):</div>
-				<div class="row-center">1478</div>
+				<div class="row-center" id="energy-intake">1478</div>
 				<div class="row-right">kcal</div>
 			</div>
 			
 			<div class="row energy-row">
 				<div class="row-left">早餐供能:</div>
-				<div class="row-center">14</div>
+				<div class="row-center" id="breakfast">14</div>
 				<div class="row-right">kcal</div>
 			</div>
 			
 			<div class="row energy-row">
 				<div class="row-left">午餐供能:</div>
-				<div class="row-center">8</div>
+				<div class="row-center" ld="lunch">8</div>
 				<div class="row-right">kcal</div>
 			</div>
 			
 			<div class="row energy-row">
 				<div class="row-left">晚餐供能:</div>
-				<div class="row-center">147118</div>
+				<div class="row-center" id="dinner">147118</div>
 				<div class="row-right">kcal</div>
 			</div>
 		</div>
 		
 		<div class="content-container">
-			<input type="button" class="content-next" value="下一步">
+			<input type="button" class="content-next" id="next"value="下一步">
 		</div>
 	
 </div>
@@ -103,3 +103,21 @@
 </div>
 </body>
 </html>
+<script type="text/javascript">
+$(function(){
+	$("#next").click(function(){
+		var power_level = $('input:radio:checked').val();
+		 $.ajax({
+            type: "post",
+            url: "${webcontext}/XXX="+power_level,
+            dataType: "json",
+            async:false,
+            success: function(data){
+            	//渲染基础能量需求
+            	//$("#base-meta").append("你要追加的内容");
+            	
+            }
+         }); 
+	});
+});
+</script>
