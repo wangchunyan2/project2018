@@ -1,5 +1,6 @@
 package com.myplate.controller;
 
+import com.myplate.pojo.TbMkNutriEvaluate;
 import com.myplate.pojo.TsPersonInfo;
 import com.myplate.pojo.User;
 import com.myplate.service.IUserService;
@@ -72,6 +73,19 @@ public class MyplateController {
 		tsPersonInfo.setUserWeight(bodyWeight);
 		tsPersonInfo.setUsersex(sex);
 		myplateService.save(tsPersonInfo);
+		return "/nutr_evaluate";
+	}
+
+	@RequestMapping("/foodConfigure")
+	public String foodConfigure(HttpServletRequest request, String powerLevel){
+		TbMkNutriEvaluate tbMkNutriEvaluate =new TbMkNutriEvaluate();
+		tbMkNutriEvaluate.setPowerLevel(powerLevel);
+		return "/nutr_evaluate";
+	}
+	@RequestMapping("/nutrEvaluate")
+	public String nutrEvaluate(HttpServletRequest request, String powerLevel){
+		TbMkNutriEvaluate tbMkNutriEvaluate =new TbMkNutriEvaluate();
+		tbMkNutriEvaluate.setPowerLevel(powerLevel);
 		return "/nutr_evaluate";
 	}
 

@@ -3,12 +3,18 @@
 <mapper namespace="com.myplate.dao.TbMkNutriEvaluateMapper" >
   <resultMap id="BaseResultMap" type="com.myplate.pojo.TbMkNutriEvaluate" >
     <result column="ID" property="id" jdbcType="INTEGER" />
-    <result column="USER_NAME" property="userName" jdbcType="VARCHAR" />
-    <result column="USER_PWD" property="pwd" jdbcType="VARCHAR" />
-    <result column="ADDRESS" property="address" jdbcType="VARCHAR" />
-    <result column="SEX" property="sex" jdbcType="VARCHAR" />
-    <result column="USER_TYPE" property="userType" jdbcType="VARCHAR" />
-  </resultMap> 
+    <result column="basal_metabolism" property="basalMetabolism" jdbcType="VARCHAR" />
+    <result column="breakfast_kcal" property="breakfastKcal" jdbcType="VARCHAR" />
+    <result column="lunch_kcal" property="lunchKcal" jdbcType="VARCHAR" />
+      <result column="dinnar_kcal" property="dinnarKcal" jdbcType="VARCHAR" />
+    <result column="power_Level" property="powerLevel" jdbcType="VARCHAR" />
+    <result column="breakfast_food" property="breakfastFood" jdbcType="VARCHAR" />
+    <result column="lunch_food" property="lunchFood" jdbcType="VARCHAR" />
+    <result column="dinnar_food" property="dinnaFrood" jdbcType="VARCHAR" />
+    <result column="other_food" property="otherFood" jdbcType="VARCHAR" />
+    <result column="cerate_date" property="cerateDate" jdbcType="VARCHAR" />
+    <result column="create_by" property="userType" jdbcType="VARCHAR" />
+  </resultMap>
 
   <insert id="save" parameterType="com.myplate.pojo.User">
 		insert into TS_COMMON_USER(user_name,user_pwd,user_type) 
