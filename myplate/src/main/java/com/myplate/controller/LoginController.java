@@ -48,14 +48,6 @@ public class LoginController {
 		}
 		return "/index";
 	}
-
-
-
-
-
-
-
-
 	@RequestMapping(value="/validateUser",method=RequestMethod.POST)
 	@ResponseBody
 	public boolean validateUser(HttpServletRequest request){
