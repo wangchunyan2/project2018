@@ -88,6 +88,15 @@ $(function(){
 		var username = $("#userName").val();
 		var password = $("#password").val();
 		var comformPwd = $("#comformPwd").val();
+        if(username == null){
+            $('#emptyValidator').html("用户名不能为空！");
+            return false;
+        }
+        debugger
+        if(  username == 'admin'){
+            $('#emptyValidator').html("用户名不能注册admin！");
+            return false;
+        }
 		 if(!password){
 			 $('#emptyValidator').html("密码不能为空！"); 
 			 return false;
@@ -98,10 +107,6 @@ $(function(){
 		} 
 		if(password != comformPwd){
 			$('#emptyValidator').html("两次密码不一致！"); 
-			 return false;
-		}
-		if(username == null){
-			 $('#emptyValidator').html("用户名不能为空！"); 
 			 return false;
 		}
 		$.ajax({

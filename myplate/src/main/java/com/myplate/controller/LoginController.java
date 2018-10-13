@@ -75,6 +75,7 @@ public class LoginController {
 				user.setUserName(userName);
 				user.setPwd(password);
 				userService.save(user);
+                httpSession.setAttribute("userName",user.getUserName());
 				return "/buildMenu";
 			}
 		} catch (Exception e) {
