@@ -22,12 +22,6 @@ http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
 			</list>
 		</property>
 	</bean>
-	<!-- 对静态资源的访问 -->
-	 <mvc:resources mapping="/js/**" location="/js/" /> 
-	 <mvc:resources mapping="/css/**" location="/css/" /> 
-	 <mvc:resources mapping="/image/**" location="/image/" /> 
-	 <mvc:resources mapping="/jsp/**" location="/WEB-INF/jsp/" />
-	 
 	<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
 		<property name="messageConverters">
 			<list>
@@ -48,7 +42,6 @@ http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
 		<mvc:interceptor>
 			<mvc:mapping path="/**"/>
 			<mvc:exclude-mapping path="/login/userLogin" />
-			<mvc:exclude-mapping path="/login/toRegisterPage" />
 			<mvc:exclude-mapping path="/login/toRegisterPage" />
 			<bean class="com.myplate.controller.UserRoleAuthorizationInterceptor"/>
 		</mvc:interceptor>
