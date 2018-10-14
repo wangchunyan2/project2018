@@ -88,5 +88,4 @@ public class LoginController {
 		}
 		return "/register";
 	}
-
 }
