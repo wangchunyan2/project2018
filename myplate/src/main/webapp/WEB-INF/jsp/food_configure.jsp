@@ -38,7 +38,7 @@
 			<div class="row-col">
 				<label class="row-label">
 					<div class="row-label-radio">
-					<input type="radio" value="1" name="power_level" id="power_level2">&nbsp;中活力水平&nbsp;&nbsp;
+					<input type="radio" value="2" name="power_level" id="power_level2">&nbsp;中活力水平&nbsp;&nbsp;
 					<img class="mt-tip-icon" src="${webcontext}/image/question.png">
 					</div>
 				</label>
@@ -49,7 +49,7 @@
 			<div class="row-col">
 				<label class="row-label">
 					<div class="row-label-radio">
-					<input type="radio" value="1" name="power_level" id="power_level3">&nbsp;重活力水平&nbsp;&nbsp;
+					<input type="radio" value="3" name="power_level" id="power_level3">&nbsp;重活力水平&nbsp;&nbsp;
 					<img class="mt-tip-icon" src="${webcontext}/image/question.png">
 					</div>
 				</label>

@@ -86,9 +86,13 @@ public class MyplateController {
 		return "/nutr_evaluate";
 	}
 	@RequestMapping("/nutrEvaluate")
-	public String nutrEvaluate(HttpServletRequest request, String powerLevel){
-		TbMkNutriEvaluate tbMkNutriEvaluate =new TbMkNutriEvaluate();
-		tbMkNutriEvaluate.setPowerLevel(powerLevel);
+	public String nutrEvaluate(HttpServletRequest request, String breakfast, String lunch, String dinner, String other){
+		TbMkNutriEvaluate tbMkNutriEvaluate = (TbMkNutriEvaluate)request.getSession().getAttribute("tbMkNutriEvaluate");
+		tbMkNutriEvaluate.setBreakfastFood(breakfast);
+		tbMkNutriEvaluate.setLunchFood(lunch);
+		tbMkNutriEvaluate.setDinnarFood(dinner);
+		tbMkNutriEvaluate.setOtherFood(other);
+		myplateService.updateTb(tbMkNutriEvaluate);
 		return "/nutr_evaluate";
 	}
 

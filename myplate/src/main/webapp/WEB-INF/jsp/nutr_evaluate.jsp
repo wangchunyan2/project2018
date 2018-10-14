@@ -102,10 +102,12 @@ $(function(){
 		$('#result-kcal').html(kcal); 
 		$.ajax({
             type: "post",
-            url: "${webcontext}/XXX=",
+            url: "${webcontext}/nutrEvaluate?breakfast="+breakfast+"&lunch="+lunch+"&dinner="+dinner+"&other="+other,
             dataType: "json",
             async:false,
             success: function(data){
+                debugger
+                console.info("营养配置调用成功！")
             	//渲染基础能量需求
             	//var bar = document.getElementById("bar");
         		//bar.style.setProperty('width','10%');

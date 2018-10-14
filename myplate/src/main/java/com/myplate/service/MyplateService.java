@@ -16,4 +16,5 @@ import javax.servlet.http.HttpServletRequest;
 public interface MyplateService {
      void save(HttpServletRequest request,TsPersonInfo tsPersonInfo);
      void save(HttpServletRequest request,TsPersonInfo tsPersonInfo,TbMkNutriEvaluate tbMkNutriEvaluate);
+     void updateTb(TbMkNutriEvaluate tbMkNutriEvaluate);
 }

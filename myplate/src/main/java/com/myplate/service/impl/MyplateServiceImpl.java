@@ -46,4 +46,8 @@ public class MyplateServiceImpl implements MyplateService{
        tbMkNutriEvaluateMapper.insert(tb);
        request.getSession().setAttribute("tbMkNutriEvaluate", tb);
     }
+
+    public void updateTb(TbMkNutriEvaluate tbMkNutriEvaluate) {
+        tbMkNutriEvaluateMapper.updateByPrimaryKey(tbMkNutriEvaluate);
+    }
 }
