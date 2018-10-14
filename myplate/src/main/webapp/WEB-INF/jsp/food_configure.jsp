@@ -106,13 +106,15 @@
 <script type="text/javascript">
 $(function(){
 	$("#next").click(function(){
-		var power_level = $('input:radio:checked').val();
+		var powerLevel = $('input:radio:checked').val();
 		 $.ajax({
             type: "post",
-            url: "${webcontext}/XXX="+power_level,
+            url: "${webcontext}/foodConfigure?powerLevel="+powerLevel,
             dataType: "json",
             async:false,
             success: function(data){
+                debugger
+				console.info("食谱配置调用成功！")
             	//渲染基础能量需求
             	//$("#base-meta").append("你要追加的内容");
             	

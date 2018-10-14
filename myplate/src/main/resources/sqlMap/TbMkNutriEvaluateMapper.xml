@@ -2,22 +2,27 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.myplate.dao.TbMkNutriEvaluateMapper" >
   <resultMap id="BaseResultMap" type="com.myplate.pojo.TbMkNutriEvaluate" >
-    <result column="ID" property="id" jdbcType="INTEGER" />
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" property="id" jdbcType="INTEGER" />
     <result column="basal_metabolism" property="basalMetabolism" jdbcType="VARCHAR" />
     <result column="breakfast_kcal" property="breakfastKcal" jdbcType="VARCHAR" />
     <result column="lunch_kcal" property="lunchKcal" jdbcType="VARCHAR" />
-      <result column="dinnar_kcal" property="dinnarKcal" jdbcType="VARCHAR" />
+    <result column="dinnar_kcal" property="dinnarKcal" jdbcType="VARCHAR" />
     <result column="power_Level" property="powerLevel" jdbcType="VARCHAR" />
     <result column="breakfast_food" property="breakfastFood" jdbcType="VARCHAR" />
     <result column="lunch_food" property="lunchFood" jdbcType="VARCHAR" />
-    <result column="dinnar_food" property="dinnaFrood" jdbcType="VARCHAR" />
+    <result column="dinnar_food" property="dinnarFood" jdbcType="VARCHAR" />
     <result column="other_food" property="otherFood" jdbcType="VARCHAR" />
-    <result column="cerate_date" property="cerateDate" jdbcType="VARCHAR" />
-    <result column="create_by" property="userType" jdbcType="VARCHAR" />
+    <result column="cerate_date" property="cerateDate" jdbcType="TIMESTAMP" />
+    <result column="create_by" property="createBy" jdbcType="INTEGER" />
   </resultMap>
-
-  <insert id="save" parameterType="com.myplate.pojo.User">
-		insert into TS_COMMON_USER(user_name,user_pwd,user_type) 
-		values(#{userName},#{pwd},#{userType})
-	</insert>
+  <sql id="Base_Column_List" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    id, basal_metabolism, breakfast_kcal, lunch_kcal, dinnar_kcal, power_Level, breakfast_food, 
+    lunch_food, dinnar_food, other_food, cerate_date, create_by
+  </sql>
 </mapper>

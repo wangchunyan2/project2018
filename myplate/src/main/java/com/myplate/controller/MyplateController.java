@@ -73,14 +73,16 @@ public class MyplateController {
 		tsPersonInfo.setUserWeight(bodyWeight);
 		tsPersonInfo.setUserSex(sex);
 		tsPersonInfo.setUserName(nickname);
-		myplateService.save(tsPersonInfo);
+		myplateService.save(request,tsPersonInfo);
 		return "/nutr_evaluate";
 	}
 
 	@RequestMapping("/foodConfigure")
 	public String foodConfigure(HttpServletRequest request, String powerLevel){
+		TsPersonInfo tsPersonInfo = (TsPersonInfo)request.getSession().getAttribute("tsPersonInfo");
 		TbMkNutriEvaluate tbMkNutriEvaluate =new TbMkNutriEvaluate();
 		tbMkNutriEvaluate.setPowerLevel(powerLevel);
+		myplateService.save(request,tsPersonInfo,tbMkNutriEvaluate);
 		return "/nutr_evaluate";
 	}
 	@RequestMapping("/nutrEvaluate")

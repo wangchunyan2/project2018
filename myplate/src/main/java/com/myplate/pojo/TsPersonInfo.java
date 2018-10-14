@@ -10,6 +10,8 @@ public class TsPersonInfo implements Serializable {
      * id
      */
     @Id
+    @Column(name = "id")
+    @GeneratedValue(generator = "JDBC")
     private Integer id;
 
     /**

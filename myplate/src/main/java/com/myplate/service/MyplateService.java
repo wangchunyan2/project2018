@@ -4,6 +4,8 @@ package com.myplate.service;
 import com.myplate.pojo.TbMkNutriEvaluate;
 import com.myplate.pojo.TsPersonInfo;
 
+import javax.servlet.http.HttpServletRequest;
+
 /**
  * Description:
  * Program Name:
@@ -12,6 +14,6 @@ import com.myplate.pojo.TsPersonInfo;
  * version 1.0
  */
 public interface MyplateService {
-     void save(TsPersonInfo tsPersonInfosPersonInfo);
-   //  void save(TbMkNutriEvaluate tbMkNutriEvaluate);
+     void save(HttpServletRequest request,TsPersonInfo tsPersonInfo);
+     void save(HttpServletRequest request,TsPersonInfo tsPersonInfo,TbMkNutriEvaluate tbMkNutriEvaluate);
 }
