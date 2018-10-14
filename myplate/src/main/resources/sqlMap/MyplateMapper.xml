@@ -3,7 +3,7 @@
 <mapper namespace="com.myplate.dao.MyplateMapper">
 <select id="queryInfo" resultType="java.util.Map">
      SELECT t.user_name,i.user_name as nickName,i.user_sex,i.user_height,i.user_weight,e.power_Level,e.basal_metabolism
-		FROM test.tb_mk_nutri_evaluate e,test.ts_common_user t,test.ts_person_info i
+		FROM tb_mk_nutri_evaluate e,ts_common_user t,ts_person_info i
 		where e.create_by=t.id and e.create_by=t.id
 		and t.user_name=#{create_by} 
 		and i.user_sex=#{female} 
