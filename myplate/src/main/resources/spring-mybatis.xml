@@ -15,9 +15,9 @@ http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
 		destroy-method="close">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<property name="url" value="jdbc:mysql://localhost:3306/test" />
+		<property name="url" value="jdbc:mysql://localhost:3306/myplate1" />
 		<property name="username" value="root" />
-		<property name="password" value="Pass1234" />
+		<property name="password" value="geex" />
 		<!-- 初始化连接大小 -->
 		<property name="initialSize" value="5"></property>
 		<!-- 连接池最大数量 -->
@@ -35,19 +35,46 @@ http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
 		<!--<property name="dataSource" ref="dataSource" /> -->
 		<property name="dataSource" ref="dataSource" />
 		<!-- 自动扫描mapping.xml文件 -->
-		<property name="mapperLocations" value="classpath:sqlMap/*.xml"></property>
+		<property name="typeAliasesPackage" value="com.myplate.pojo"/>
+		<property name="mapperLocations">
+			<array>
+				<value>classpath:sqlMap/*.xml</value>
+			</array>
+		</property>
 	</bean>
 
 	<!-- DAO接口所在包名，Spring会自动查找其下的类 -->
-	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+	<bean class="tk.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="com.myplate.dao"/>
+		<property name="markerInterface" value="com.myplate.dao.BaseDao"/>
+		<property name="properties">
+			<value>
+				mappers=com.myplate.dao.BaseDao
+			</value>
+		</property>
+		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+	</bean>
+
+
+	<!--<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="basePackage" value="com.myplate.dao" />
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>
-	</bean>
+	</bean>-->
 
 	<!-- (事务管理)transaction manager, use JtaTransactionManager for global tx -->
 	<bean id="transactionManager"
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<bean id="userMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.myplate.dao.UserMapper"/>
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+	</bean>
+
+	<bean id="tsPersonInfoMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.myplate.dao.TsPersonInfoMapper"/>
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"/>
 	</bean>
 
 </beans>

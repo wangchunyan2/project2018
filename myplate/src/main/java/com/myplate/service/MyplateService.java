@@ -13,5 +13,5 @@ import com.myplate.pojo.TsPersonInfo;
  */
 public interface MyplateService {
      void save(TsPersonInfo tsPersonInfosPersonInfo);
-     void save(TbMkNutriEvaluate tbMkNutriEvaluate);
+   //  void save(TbMkNutriEvaluate tbMkNutriEvaluate);
 }

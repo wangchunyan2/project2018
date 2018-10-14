@@ -1,9 +1,6 @@
 package com.myplate.service.impl;
 
-import com.myplate.dao.TbMkNutriEvaluateMapper;
 import com.myplate.dao.TsPersonInfoMapper;
-import com.myplate.dao.UserMapper;
-import com.myplate.pojo.TbMkNutriEvaluate;
 import com.myplate.pojo.TsPersonInfo;
 import com.myplate.service.MyplateService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,19 +22,18 @@ import javax.annotation.Resource;
 public class MyplateServiceImpl implements MyplateService{
     @Resource
     TsPersonInfoMapper tsPersonInfoMapper;
-    @Autowired
-    private TsPersonInfoMapper tsPersonInfoDao;
 
-    @Resource
+
+  /*  @Resource
     TbMkNutriEvaluateMapper tbMkNutriEvaluateMapper;
     @Autowired
-    private TbMkNutriEvaluateMapper TbMkNutriEvaluateDao;
+    private TbMkNutriEvaluateMapper TbMkNutriEvaluateDao;*/
 
 
     public void save(TsPersonInfo tsPersonInfo) {
-        tsPersonInfoDao.save(tsPersonInfo);
+        tsPersonInfoMapper.insert(tsPersonInfo);
     }
-    public void save(TbMkNutriEvaluate tbMkNutriEvaluate) {
+  /*  public void save(TbMkNutriEvaluate tbMkNutriEvaluate) {
         TbMkNutriEvaluateDao.save(tbMkNutriEvaluate);
-    }
+    }*/
 }

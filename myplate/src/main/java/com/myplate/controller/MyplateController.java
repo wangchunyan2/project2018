@@ -71,7 +71,8 @@ public class MyplateController {
 		tsPersonInfo.setUserAge(age);
 		tsPersonInfo.setUserHeight(bodyHeight);
 		tsPersonInfo.setUserWeight(bodyWeight);
-		tsPersonInfo.setUsersex(sex);
+		tsPersonInfo.setUserSex(sex);
+		tsPersonInfo.setUserName(nickname);
 		myplateService.save(tsPersonInfo);
 		return "/nutr_evaluate";
 	}

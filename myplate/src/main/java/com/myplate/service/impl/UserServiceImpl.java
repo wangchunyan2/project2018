@@ -14,14 +14,14 @@ import com.myplate.service.IUserService;
 public class UserServiceImpl implements IUserService{
 	@Resource
 	UserMapper userMapper;
-	@Autowired
-	private UserMapper userDao;
+
+
 	public User getUserByUserName(String userName) {
 		// TODO Auto-generated method stub
-		return userDao.getUserByUserName(userName);
+		return userMapper.getUserByUserName(userName);
 	}
 	public void save(User user){
-		userDao.save(user);
+		userMapper.save(user);
 	}
 
 }
