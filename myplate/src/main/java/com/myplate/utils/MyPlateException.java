@@ -1,12 +1,6 @@
 package com.myplate.utils;
 
-/**
- * Description:
- * Program Name:
- * author :john
- * Date:2018-10-2018/10/13  15:38  星期六
- * version 1.0
- */
+
 public class MyPlateException extends  Exception{
     //错误消息
     private String msg;

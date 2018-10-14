@@ -6,7 +6,6 @@ import com.myplate.pojo.BasalMetabolism;
 import com.myplate.pojo.TbMkNutriEvaluate;
 import com.myplate.pojo.TsPersonInfo;
 import com.myplate.service.MyplateService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
