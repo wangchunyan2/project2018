@@ -20,10 +20,11 @@
 <body style="background-color: #f3f3f3; margin: 0; padding: 0;">
 <div class="content">
 <div class="content-detail">
+<form action="${webcontext}/queryInfo" method="post" id="form_id">
 		<h1 class="content-header-text">我的膳食营养评价系统-后台管理页面</h1>
 		<div class="content-search">
 				<lable class="row-left">创建人：</lable>
-				<input type="text" class="content-input">
+				<input type="text" class="content-input" name="create_by">
 				<lable class="row-center">性别：</lable>
 				<select class="content-row-select" name="female"> 
 					<option value="0">请选择</option> 
@@ -39,8 +40,10 @@
 				</select>
 		</div>
 		<div class="row">
-				<input type="button" class="content-button" id="query" value="查询">
-			</div>
+				<input type="submit" class="content-button" id="query" value="查询">
+		</div>
+</form>
+<form action="">
 	<div class="content-result">
 		<table class="content-table" align="center">
 		  <thead>
@@ -54,39 +57,23 @@
 		     </tr>
 		  </thead>
 		  <tbody>
-		   <tr align="center">
-			<td>创建人</td><td>性别</td><td>身高</td><td>体重</td><td>活力水平</td><td>营养素摄入</td></tr>
+		  <c:forEach items="${resultList}" var="s">
+		   	<tr align="center">
+				<td>创建人</td><td>性别</td><td>身高</td><td>体重</td><td>活力水平</td><td>营养素摄入</td>
+			</tr>
+		  </c:forEach>
 		  </tbody>
-		</table> 
+		  
+		</table>
 	</div> 
+</form>
 </div>
 </div>
 </body>
 <script type="text/javascript">
 $(function(){
 	$("#query").click(function(){
-		var breakfast = $("#breakfast").val().trim();
-		var lunch = $("#lunch").val().trim();
-		var dinner = $("#dinner").val().trim();
-		var other = $("#other").val().trim();
-		if(breakfast=='' || lunch=='' || dinner=='' || other=='' ){
-			alert('营养素摄入输入不合法！');
-			return;
-		}
-		var kcal =  parseInt(breakfast)+parseInt(lunch)+parseInt(dinner)+parseInt(other);
-		$('#result-kcal').html(kcal); 
-		$.ajax({
-            type: "post",
-            url: "${webcontext}/XXX=",
-            dataType: "json",
-            async:false,
-            success: function(data){
-            	//渲染基础能量需求
-            	//var bar = document.getElementById("bar");
-        		//bar.style.setProperty('width','10%');
-        		//$('#bar').html("10%"); 
-            }
-         });
+		$("#form_id").submit();
 	});
 });
 </html>
