@@ -77,11 +77,11 @@ public class MyplateController {
 		TsPersonInfo tsPersonInfo = new TsPersonInfo();
 		tsPersonInfo.setCreateBy(request.getSession().getAttribute("id").toString() );
 		tsPersonInfo.setCreateDate(new Date());
-		tsPersonInfo.setUserAge(age);
-		tsPersonInfo.setUserHeight(bodyHeight);
-		tsPersonInfo.setUserWeight(bodyWeight);
-		tsPersonInfo.setUserSex(sex);
-		tsPersonInfo.setUserName(nickname);
+		tsPersonInfo.setUserAge(Integer.parseInt(request.getParameter("age")));
+		tsPersonInfo.setUserHeight(request.getParameter("bodyHeight"));
+		tsPersonInfo.setUserWeight(request.getParameter("bodyWeight"));
+		tsPersonInfo.setUserSex(request.getParameter("sex"));
+		tsPersonInfo.setUserName(request.getParameter("nickname"));
 		myplateService.save(request,tsPersonInfo);
 		return "/food_configure";
 	}

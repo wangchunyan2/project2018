@@ -15,9 +15,9 @@ http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
 		destroy-method="close">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<property name="url" value="jdbc:mysql://localhost:3306/myplate1" />
+		<property name="url" value="jdbc:mysql://localhost:3306/test" />
 		<property name="username" value="root" />
-		<property name="password" value="geex" />
+		<property name="password" value="Pass1234" />
 		<!-- 初始化连接大小 -->
 		<property name="initialSize" value="5"></property>
 		<!-- 连接池最大数量 -->

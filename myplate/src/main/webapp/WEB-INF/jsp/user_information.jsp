@@ -18,28 +18,28 @@
 </head>
 <body>
 <div class="content">
+<form action="${webcontext}/startBodyTest" method="post" id="form_id">
 	<div class="content-detail">
 		<div class="content-information-header">
 			<h4 class="content-information-header-text">个人信息</h4>
 		</div>
-		<form action="" method="post" id="form_id">
 		<div class="content-information-container">
 			<div class="row">
 			<div class="row-label">
 				<label class="content-name">昵称：</label>
-				<label><input type="text" id="nickname" class="content-input"></label>
+				<label><input type="text" id="nickname" name="nickname" class="content-input"></label>
 				<label class="content-lable"  style="margin-left: 100px;">性别：</label>
 				<label class="content-lable">
-				<input type="radio" name="sex" checked="checked" value="male">男</label>
+				<input type="radio" name="sex" checked="checked" value="1">男</label>
 				<label class="content-lable">
-				<input type="radio"name="sex" value="female">女</label>
+				<input type="radio"name="sex" value="2">女</label>
 			</div>	
 			</div>
 			
 			<div class="row" style="margin-top: 60px; margin-left: -459px;">
 			<div class="row-label">
 				<label class="content-height">身高：</label>
-				<label><input type="text" id="bodyHeight" class="content-input"></label>&nbsp;cm
+				<label><input type="text" id="bodyHeight" name="bodyHeight" class="content-input"></label>&nbsp;cm
 				<label class="content-weight"  style="margin-left: 69px;">体重：</label>
 				<label><input type="text" id="bodyWeight" class="content-input"style="width: 70px;"></label>&nbsp;kg
 			</div>	
@@ -48,7 +48,7 @@
 			<div class="row" style="margin-top: 112px; margin-left: -497px;">
 			<div class="row-label">
 				<label class="content-height">年龄：</label>
-				<label><input type="text" id="age" class="content-input"></label>&nbsp;&nbsp;
+				<label><input type="text" id="age" name="age" class="content-input"></label>&nbsp;&nbsp;
 			</div>	
 			</div>
 			
@@ -57,8 +57,8 @@
 			</div>
 			
 		</div>
-		</form>
 	</div>
+</form>
 </div>
 </body>
 </html>
@@ -71,22 +71,38 @@
             var bodyHeight = $("#bodyHeight").val();
             var bodyWeight = $("#bodyWeight").val();
             var age = $("#age").val();
-            $.ajax({
-                type: "post",
-                url: "${webcontext}/startBodyTest?nickname="+nickname+"&sex="+sex+"&bodyHeight="+bodyHeight+"&bodyWeight="+bodyWeight+"&age="+age,
-                dataType: "json",
-                async:false,
-                success: function(data){
-                    if(data){
-                        $("#form_id").attr("action","${webcontext}/toFoodConfPage");
-                        $("#form_id").submit();
-                    }
-                },
-                error:function(data,type, err){
-                    console.log("ajax错误类型："+type);
-                    console.log(err);
-                }
-            });
+            if(!nickname){
+            	alert("请输入用户名");
+            	return false;
+            }
+			if(!bodyHeight){
+				alert("请输入身高");
+            	return false;
+            }else{
+            	if(isNaN(bodyHeight)){
+            		alert("身高输入值不合法！");
+                	return false;
+            	}
+            }
+			if(!bodyWeight){
+				alert("请输入体重");
+            	return false;
+			}else{
+				if(isNaN(bodyWeight)){
+            		alert("体重输入值不合法！");
+                	return false;
+            	}
+			}
+			if(!age){
+				alert("请输入年龄");
+            	return false;
+			}else{
+				if(isNaN(age)){
+            		alert("年龄输入值不合法！");
+                	return false;
+            	}
+			}
+            $("#form_id").submit();
         });
     });
 </script>
