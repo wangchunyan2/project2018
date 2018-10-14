@@ -65,31 +65,31 @@
 		<div class="content-container" style="height: 160px;">
 			<div class="row energy-row">
 				<div class="row-left">基础代谢:</div>
-				<div class="row-center" id="base-meta"></div>
+				<div class="row-center" id="base-meta">${metabolism}</div>
 				<div class="row-right">kcal/day</div>
 			</div>
 			
 			<div class="row energy-row">
 				<div class="row-left">能量摄入水平(推荐):</div>
-				<div class="row-center" id="energy-intake">1478</div>
+				<div class="row-center" id="energy-intake">${metabolism.recommendUptake}</div>
 				<div class="row-right">kcal</div>
 			</div>
 			
 			<div class="row energy-row">
 				<div class="row-left">早餐供能:</div>
-				<div class="row-center" id="breakfast">14</div>
+				<div class="row-center" id="breakfast">${metabolism.breakfastKcal}</div>
 				<div class="row-right">kcal</div>
 			</div>
 			
 			<div class="row energy-row">
 				<div class="row-left">午餐供能:</div>
-				<div class="row-center" ld="lunch">8</div>
+				<div class="row-center" ld="lunch">${metabolism.lunchKcal}</div>
 				<div class="row-right">kcal</div>
 			</div>
 			
 			<div class="row energy-row">
 				<div class="row-left">晚餐供能:</div>
-				<div class="row-center" id="dinner">147118</div>
+				<div class="row-center" id="dinner">${metabolism.dinnarKcal}</div>
 				<div class="row-right">kcal</div>
 			</div>
 		</div>
@@ -97,6 +97,7 @@
 		<div class="content-container">
 			<input type="button" class="content-next" id="next"value="下一步">
 		</div>
+		<form id="next_form" method="post" action="${webcontext}/foodConfigure"></form>
 	
 </div>
 
@@ -106,20 +107,20 @@
 <script type="text/javascript">
 $(function(){
 	$("#next").click(function(){
-		var powerLevel = $('input:radio:checked').val();
+		$("#next_form").submit();
+		/* var powerLevel = $('input:radio:checked').val();
 		 $.ajax({
             type: "post",
             url: "${webcontext}/foodConfigure?powerLevel="+powerLevel,
             dataType: "json",
             async:false,
             success: function(data){
-                debugger
 				console.info("食谱配置调用成功！")
             	//渲染基础能量需求
             	//$("#base-meta").append("你要追加的内容");
             	
             }
-         }); 
+         });  */
 	});
 });
 </script>

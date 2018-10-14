@@ -41,7 +41,7 @@
 				<label class="content-height">身高：</label>
 				<label><input type="text" id="bodyHeight" name="bodyHeight" class="content-input"></label>&nbsp;cm
 				<label class="content-weight"  style="margin-left: 69px;">体重：</label>
-				<label><input type="text" id="bodyWeight" class="content-input"style="width: 70px;"></label>&nbsp;kg
+				<label><input type="text" id="bodyWeight" name="bodyWeight" class="content-input"style="width: 70px;"></label>&nbsp;kg
 			</div>	
 			</div>
 			
