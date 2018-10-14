@@ -76,8 +76,22 @@ public class TbMkNutriEvaluate implements Serializable {
      */
     @Column(name = "create_by")
     private Integer createBy;
+    /**
+     * 能量摄入水平
+     */
+    @Transient
+    private String recommendUptake;
+
+    public String getRecommendUptake() {
+        return recommendUptake;
+    }
+
+    public void setRecommendUptake(String recommendUptake) {
+        this.recommendUptake = recommendUptake;
+    }
 
     private static final long serialVersionUID = 1L;
+
 
     /**
      * @return id
@@ -309,6 +323,7 @@ public class TbMkNutriEvaluate implements Serializable {
         sb.append(", otherFood=").append(otherFood);
         sb.append(", cerateDate=").append(cerateDate);
         sb.append(", createBy=").append(createBy);
+        sb.append(", recommendUptake=").append(recommendUptake);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

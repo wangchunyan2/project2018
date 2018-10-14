@@ -1,8 +1,6 @@
 package com.myplate.controller;
 
-import com.myplate.pojo.TbMkNutriEvaluate;
-import com.myplate.pojo.TsPersonInfo;
-import com.myplate.pojo.User;
+import com.myplate.pojo.*;
 import com.myplate.service.IUserService;
 import com.myplate.service.MyplateService;
 import org.apache.log4j.Logger;
@@ -24,7 +22,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.myplate.pojo.QueryConsumer;
 import com.myplate.service.IMyplateService;
 
 import javax.servlet.http.HttpServletRequest;
@@ -93,7 +90,7 @@ public class MyplateController {
 		tsPersonInfo.setUserSex(sex);
 		tsPersonInfo.setUserName(nickname);
 		myplateService.save(request,tsPersonInfo);
-		return "/nutr_evaluate";
+		return "/food_configure";
 	}
 
 	@RequestMapping("/foodConfigure")
@@ -146,5 +143,14 @@ public class MyplateController {
 		}
 		mv.addObject("resultList", resList);
 		return "/admin";
+	}
+
+	@RequestMapping("/basalMetabolism")
+	public String basalMetabolism(HttpServletRequest request,String powerLevel){
+		ModelAndView mv = new ModelAndView();
+		TsPersonInfo tsPersonInfo = (TsPersonInfo)request.getSession().getAttribute("tsPersonInfo");
+		BasalMetabolism metabolism = myplateService.basalMetabolism(request, tsPersonInfo, powerLevel);
+		mv.addObject("metabolism", metabolism);
+		return "/food_configure";
 	}
 }
