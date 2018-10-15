@@ -84,7 +84,6 @@ public class MyplateController {
 		tsPersonInfo.setUserSex(request.getParameter("sex"));
 		tsPersonInfo.setUserName(request.getParameter("nickname"));
 		myplateService.save(request,tsPersonInfo);
-		Calcu(mv,request,"1");
 		return "/food_configure";
 	}
 
@@ -142,16 +141,17 @@ public class MyplateController {
 	}
 
 	@RequestMapping("/basalMetabolism")
-	public String basalMetabolism(HttpServletRequest request,String powerLevel){
+	public ModelAndView basalMetabolism(HttpServletRequest request,String powerLevel){
 		ModelAndView mv = new ModelAndView();
-		Calcu(mv,request,powerLevel);
-		return "/food_configure";
-	}
-	private ModelAndView Calcu(ModelAndView mv,HttpServletRequest request,String powerLevel){
 		TsPersonInfo tsPersonInfo = (TsPersonInfo)request.getSession().getAttribute("tsPersonInfo");
 		BasalMetabolism metabolism = myplateService.basalMetabolism(request, tsPersonInfo, powerLevel);
-		//mv.addObject("metabolism", metabolism);
-		mv.addObject("metabolism", "1233");
-		return mv;
+		mv.addObject("metabolism",metabolism);
+		mv.setViewName("/food_configure");
+		return  mv;
 	}
+	/*private BasalMetabolism Calcu(HttpServletRequest request,String powerLevel){
+		TsPersonInfo tsPersonInfo = (TsPersonInfo)request.getSession().getAttribute("tsPersonInfo");
+		BasalMetabolism metabolism = myplateService.basalMetabolism(request, tsPersonInfo, powerLevel);
+		return metabolism;
+	}*/
 }

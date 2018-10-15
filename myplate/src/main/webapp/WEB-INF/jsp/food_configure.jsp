@@ -27,7 +27,8 @@
 			<div class="row-col">
 				<label class="row-label">
 					<div class="row-label-radio">
-					<input type="radio" value="1" name="power_level" id="power_level1" checked="checked">&nbsp;轻活力水平&nbsp;&nbsp;
+					<%--<input type="radio" value="1" name="power_level" id="power_level1" checked="checked">&nbsp;轻活力水平&nbsp;&nbsp;--%>
+						<a href="/myplate/basalMetabolism?powerLevel=1">轻活力水平</a>
 					<img class="mt-tip-icon" src="${webcontext}/image/question.png">
 					</div>
 				</label>
@@ -38,7 +39,8 @@
 			<div class="row-col">
 				<label class="row-label">
 					<div class="row-label-radio">
-					<input type="radio" value="2" name="power_level" id="power_level2">&nbsp;中活力水平&nbsp;&nbsp;
+					<%--<input type="radio" value="2" name="power_level" id="power_level2">&nbsp;中活力水平&nbsp;&nbsp;--%>
+						<a href="/myplate/basalMetabolism?powerLevel=2">&nbsp;&nbsp;中活力水平</a>
 					<img class="mt-tip-icon" src="${webcontext}/image/question.png">
 					</div>
 				</label>
@@ -49,7 +51,8 @@
 			<div class="row-col">
 				<label class="row-label">
 					<div class="row-label-radio">
-					<input type="radio" value="3" name="power_level" id="power_level3">&nbsp;重活力水平&nbsp;&nbsp;
+					<%--<input type="radio" value="3" name="power_level" id="power_level3">&nbsp;重活力水平&nbsp;&nbsp;--%>
+						<a href="/myplate/basalMetabolism?powerLevel=3">&nbsp;&nbsp;重活力水平</a>
 					<img class="mt-tip-icon" src="${webcontext}/image/question.png">
 					</div>
 				</label>
@@ -65,7 +68,7 @@
 		<div class="content-container" style="height: 160px;">
 			<div class="row energy-row">
 				<div class="row-left">基础代谢:</div>
-				<div class="row-center" id="base-meta">${metabolism}</div>
+				<div class="row-center" id="base-meta">${metabolism.basalMetabolism}</div>
 				<div class="row-right">kcal/day</div>
 			</div>
 			
@@ -118,7 +121,7 @@ $(function(){
 				console.info("食谱配置调用成功！")
             	//渲染基础能量需求
             	//$("#base-meta").append("你要追加的内容");
-            	
+
             }
          });  */
 	});
