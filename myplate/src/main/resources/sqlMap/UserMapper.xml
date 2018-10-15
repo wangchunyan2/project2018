@@ -15,8 +15,8 @@
 		and USER_NAME like '%${userName}%'
 	</if>
   </select>
-  <insert id="save" parameterType="com.myplate.pojo.User">
-		insert into TS_COMMON_USER(user_name,user_pwd,user_type) 
-		values(#{userName},#{pwd},#{userType})
+	<insert id="save" useGeneratedKeys="true" keyProperty="id" parameterType="com.myplate.pojo.User">
+    	insert into TS_COMMON_USER(user_name,user_pwd) 
+		values(#{userName},#{pwd})
 	</insert>
 </mapper>

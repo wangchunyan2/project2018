@@ -27,8 +27,8 @@
 			<div class="row-col">
 				<label class="row-label">
 					<div class="row-label-radio">
-					<%--<input type="radio" value="1" name="power_level" id="power_level1" checked="checked">&nbsp;轻活力水平&nbsp;&nbsp;--%>
-						<a href="/myplate/basalMetabolism?powerLevel=1">轻活力水平</a>
+					<input type="radio" value="1" name="power_level" id="power_level1" checked="checked">&nbsp;轻活力水平&nbsp;&nbsp;
+						<!-- <a href="/myplate/basalMetabolism?powerLevel=1">轻活力水平</a> -->
 					<img class="mt-tip-icon" src="${webcontext}/image/question.png">
 					</div>
 				</label>
@@ -39,8 +39,8 @@
 			<div class="row-col">
 				<label class="row-label">
 					<div class="row-label-radio">
-					<%--<input type="radio" value="2" name="power_level" id="power_level2">&nbsp;中活力水平&nbsp;&nbsp;--%>
-						<a href="/myplate/basalMetabolism?powerLevel=2">&nbsp;&nbsp;中活力水平</a>
+					<input type="radio" value="2" name="power_level" id="power_level2">&nbsp;中活力水平&nbsp;&nbsp;
+						<!-- <a href="/myplate/basalMetabolism?powerLevel=2">&nbsp;&nbsp;中活力水平</a> -->
 					<img class="mt-tip-icon" src="${webcontext}/image/question.png">
 					</div>
 				</label>
@@ -51,8 +51,8 @@
 			<div class="row-col">
 				<label class="row-label">
 					<div class="row-label-radio">
-					<%--<input type="radio" value="3" name="power_level" id="power_level3">&nbsp;重活力水平&nbsp;&nbsp;--%>
-						<a href="/myplate/basalMetabolism?powerLevel=3">&nbsp;&nbsp;重活力水平</a>
+					<input type="radio" value="3" name="power_level" id="power_level3">&nbsp;重活力水平&nbsp;&nbsp;
+						<!-- <a href="/myplate/basalMetabolism?powerLevel=3">&nbsp;&nbsp;重活力水平</a> -->
 					<img class="mt-tip-icon" src="${webcontext}/image/question.png">
 					</div>
 				</label>
@@ -101,6 +101,7 @@
 			<input type="button" class="content-next" id="next"value="下一步">
 		</div>
 		<form id="next_form" method="post" action="${webcontext}/foodConfigure"></form>
+		<form id="metabolism_form" method="post" action="${webcontext}/basalMetabolism"></form>
 	
 </div>
 
@@ -111,19 +112,27 @@
 $(function(){
 	$("#next").click(function(){
 		$("#next_form").submit();
-		/* var powerLevel = $('input:radio:checked').val();
-		 $.ajax({
-            type: "post",
-            url: "${webcontext}/foodConfigure?powerLevel="+powerLevel,
-            dataType: "json",
-            async:false,
-            success: function(data){
-				console.info("食谱配置调用成功！")
-            	//渲染基础能量需求
-            	//$("#base-meta").append("你要追加的内容");
-
-            }
-         });  */
 	});
+	$('input[type=radio][name=power_level]').change(function() {
+		//$("#metabolism_form").submit();
+		var power_level = $('input:radio:checked').val();
+		console.log(power_level);
+		 $.ajax({
+           type: "post",
+           url: "${webcontext}/basalMetabolism?powerLevel="+power_level,
+           //dataType: "json",
+           async:false,
+           success: function(data){
+        	   $("#base-meta").html(data.basalMetabolism);
+        	   $("#energy-intake").html(data.recommendUptake);
+        	   $("#breakfast").html(data.breakfastKcal);
+        	   $("#lunch").html(data.lunchKcal);
+        	   $("#dinner").html(data.dinnarKcal);
+				console.log(data);
+           	//渲染基础能量需求
+           	//$("#base-meta").append("你要追加的内容");
+           }
+        }); 
+    });
 });
 </script>

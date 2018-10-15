@@ -46,6 +46,7 @@ public class MyplateServiceImpl implements MyplateService{
        tb.setLunchKcal(metabolism.getDinnarKcal());
        tb.setDinnarKcal(metabolism.getDinnarKcal());
        tb.setCreateBy(tsPersonInfo.getId());
+       tb.setRecommendUptake(metabolism.getRecommendUptake());
        tbMkNutriEvaluateMapper.insert(tb);
        request.getSession().setAttribute("tbMkNutriEvaluate", tb);
     }

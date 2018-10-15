@@ -1,25 +1,31 @@
 package com.myplate.controller;
 
-import com.myplate.pojo.*;
-import com.myplate.service.IUserService;
-import com.myplate.service.MyplateService;
-import org.apache.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.alibaba.fastjson.JSONObject;
+import com.myplate.pojo.BasalMetabolism;
+import com.myplate.pojo.QueryConsumer;
+import com.myplate.pojo.TbMkNutriEvaluate;
+import com.myplate.pojo.TsPersonInfo;
 import com.myplate.service.IMyplateService;
-
-import java.util.Date;
+import com.myplate.service.IUserService;
+import com.myplate.service.MyplateService;
 
 @Controller
 public class MyplateController {
@@ -72,7 +78,8 @@ public class MyplateController {
 	}
 
 	@RequestMapping("/startBodyTest")
-	public String startBodyTest(HttpServletRequest request, String userId, String nickname, String sex, String bodyHeight,
+	@ResponseBody
+	public ModelAndView startBodyTest(HttpServletRequest request, String userId, String nickname, String sex, String bodyHeight,
 								String bodyWeight, Integer age){
 		ModelAndView mv = new ModelAndView();
 		TsPersonInfo tsPersonInfo = new TsPersonInfo();
@@ -84,7 +91,12 @@ public class MyplateController {
 		tsPersonInfo.setUserSex(request.getParameter("sex"));
 		tsPersonInfo.setUserName(request.getParameter("nickname"));
 		myplateService.save(request,tsPersonInfo);
-		return "/food_configure";
+		
+		BasalMetabolism metabolism = myplateService.basalMetabolism(request, tsPersonInfo, "1");
+		mv.addObject("metabolism",metabolism);
+		mv.setViewName("/food_configure");
+		
+		return mv;
 	}
 
 	@RequestMapping("/foodConfigure")
@@ -97,6 +109,7 @@ public class MyplateController {
 		return "/nutr_evaluate";
 	}
 	@RequestMapping("/nutrEvaluate")
+	@ResponseBody
 	public String nutrEvaluate(HttpServletRequest request, String breakfast, String lunch, String dinner, String other){
 		TbMkNutriEvaluate tbMkNutriEvaluate = (TbMkNutriEvaluate)request.getSession().getAttribute("tbMkNutriEvaluate");
 		tbMkNutriEvaluate.setBreakfastFood(breakfast);
@@ -104,7 +117,17 @@ public class MyplateController {
 		tbMkNutriEvaluate.setDinnarFood(dinner);
 		tbMkNutriEvaluate.setOtherFood(other);
 		myplateService.updateTb(tbMkNutriEvaluate);
-		return "/nutr_evaluate";
+		
+		double recommendUptake=Double.parseDouble(tbMkNutriEvaluate.getRecommendUptake());
+		double actualUptake=Double.parseDouble(breakfast)+Double.parseDouble(lunch)+Double.parseDouble(dinner)+Double.parseDouble(other);
+		
+		DecimalFormat df = new DecimalFormat("0.00");//格式化小数  
+		String preUptake = df.format((actualUptake/recommendUptake)*100)+"%";//
+		JSONObject result=new JSONObject();
+		result.put("preUptake", preUptake);
+		result.put("recommendUptake", recommendUptake);
+		
+		return result.toString();
 	}
 
 
@@ -141,17 +164,11 @@ public class MyplateController {
 	}
 
 	@RequestMapping("/basalMetabolism")
-	public ModelAndView basalMetabolism(HttpServletRequest request,String powerLevel){
-		ModelAndView mv = new ModelAndView();
+	@ResponseBody
+	public BasalMetabolism basalMetabolism(HttpServletRequest request,String powerLevel){
+		powerLevel=request.getParameter("powerLevel");
 		TsPersonInfo tsPersonInfo = (TsPersonInfo)request.getSession().getAttribute("tsPersonInfo");
 		BasalMetabolism metabolism = myplateService.basalMetabolism(request, tsPersonInfo, powerLevel);
-		mv.addObject("metabolism",metabolism);
-		mv.setViewName("/food_configure");
-		return  mv;
+		return  metabolism;
 	}
-	/*private BasalMetabolism Calcu(HttpServletRequest request,String powerLevel){
-		TsPersonInfo tsPersonInfo = (TsPersonInfo)request.getSession().getAttribute("tsPersonInfo");
-		BasalMetabolism metabolism = myplateService.basalMetabolism(request, tsPersonInfo, powerLevel);
-		return metabolism;
-	}*/
 }

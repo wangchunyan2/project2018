@@ -51,7 +51,9 @@
 	</div>
 		
 	<div class="content-meals" style="height: 60px;">
+		<form action="nutrEvaluate" method="post">
 		<input type="button" class="start-test" id="start-test" value="开始测评">
+		</form>
 	</div>
 </div>
 <div class="content-right">
@@ -76,7 +78,7 @@
 				<span id="result-kcal"></span>千卡。</p>
 		<div class="test-result-graph">
 			<div>
-				<div class="test-result-graph-text">推荐摄入量<br>2400kcal</div>
+				<div class="test-result-graph-text">推荐摄入量<br><label id="recomKcal"></label>kcal</div>
 			</div>
 			<div class="test-result-progress">  
     		<span class="bar" id="bar"></span>  
@@ -100,18 +102,18 @@ $(function(){
 		}
 		var kcal =  parseInt(breakfast)+parseInt(lunch)+parseInt(dinner)+parseInt(other);
 		$('#result-kcal').html(kcal); 
+		
 		$.ajax({
             type: "post",
             url: "${webcontext}/nutrEvaluate?breakfast="+breakfast+"&lunch="+lunch+"&dinner="+dinner+"&other="+other,
             dataType: "json",
             async:false,
             success: function(data){
-                debugger
                 console.info("营养配置调用成功！")
-            	//渲染基础能量需求
-            	//var bar = document.getElementById("bar");
-        		//bar.style.setProperty('width','10%');
-        		//$('#bar').html("10%"); 
+                $('#recomKcal').html(data.recommendUptake); 
+              	var bar = document.getElementById("bar");
+        		bar.style.setProperty('width',data.preUptake);
+        		$('#bar').html(data.preUptake); 
             }
          });
 	});

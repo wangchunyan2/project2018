@@ -80,6 +80,7 @@ public class TbMkNutriEvaluate implements Serializable {
      * 能量摄入水平
      */
     @Transient
+    @Column(name = "recommend_uptake")
     private String recommendUptake;
 
     public String getRecommendUptake() {

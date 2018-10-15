@@ -73,7 +73,7 @@ public class LoginController {
 		return "/register";
 	}
 	@RequestMapping("/register")
-	public String register(HttpSession httpSession,String userName,String password){
+	public String register(HttpServletRequest request,HttpSession httpSession,String userName,String password){
 		try {
 			if(!StringUtils.isEmpty(userName)&& !StringUtils.isEmpty(password)){
 				User user = new User();
@@ -81,6 +81,8 @@ public class LoginController {
 				user.setPwd(password);
 				userService.save(user);
                 httpSession.setAttribute("userName",user.getUserName());
+                System.out.println(user.getId());
+                request.getSession().setAttribute("id",user.getId());
 				return "/buildMenu";
 			}
 		} catch (Exception e) {

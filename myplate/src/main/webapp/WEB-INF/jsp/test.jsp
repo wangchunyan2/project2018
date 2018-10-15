@@ -15,6 +15,7 @@
 <script type="text/javascript" src="${webcontext}/js/jquery.min.js"></script>
 </head>
 <body>
-${metabolism}
+<h1>${metabolism}</h1>
+
 </body>
 </html>
