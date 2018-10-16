@@ -3,6 +3,7 @@ package com.myplate.service.impl;
 import java.util.List;
 import java.util.Map;
 
+import com.myplate.pojo.QueryConsumer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,10 +16,10 @@ public class MyServiceImpl implements IMyplateService{
 	@Autowired
 	private MyplateMapper myplateMapper;
 
-	public List<Map<String,String>> queryInfo(String createBy, String female,
-			String power_level) {
+	public List<QueryConsumer> queryInfo(String userName, String userSex,
+										 String powerLevel) {
 		// TODO Auto-generated method stub
-		return myplateMapper.queryInfo(createBy, female, power_level);
+		return myplateMapper.queryInfo(userName, userSex, powerLevel);
 	}
 
 }

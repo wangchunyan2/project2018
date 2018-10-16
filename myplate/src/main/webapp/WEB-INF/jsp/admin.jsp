@@ -21,19 +21,19 @@
 <div class="content">
 <div class="content-detail">
 <form action="${webcontext}/queryInfo" method="post" id="form_id">
-		<h1 class="content-header-text">我的膳食营养评价系统-后台管理页面</h1>
+		<h1 class="content-header-text"><%--我的膳食营养评价系统-后台管理页面--%></h1>
 		<div class="content-search">
 				<lable class="row-left">创建人：</lable>
 				<input type="text" class="content-input" name="create_by">
 				<lable class="row-center">性别：</lable>
 				<select class="content-row-select" name="female"> 
-					<option value="0">请选择</option> 
-					<option value="1">男</option> 
+					<option value="">请选择</option>
+					<option value="1">男</option>
 					<option value="2">女</option> 
 				</select> 
 				<lable class="row-right">活力水平：</lable>
 				<select class="content-row-select" name="power_level"> 
-					<option value="0">请选择</option> 
+					<option value="">请选择</option>
 					<option value="1">轻活力水平</option> 
 					<option value="2">中活力水平</option> 
 					<option value="3">重活力水平</option> 
@@ -57,9 +57,14 @@
 		     </tr>
 		  </thead>
 		  <tbody>
-		  <c:forEach items="${resultList}" var="s">
+		  <c:forEach items="${queryList}" var="s">
 		   	<tr align="center">
-				<td>创建人</td><td>性别</td><td>身高</td><td>体重</td><td>活力水平</td><td>营养素摄入</td>
+				<td>${s.user_name}</td>
+				<td>${s.user_sex}</td>
+				<td>${s.user_height}</td>
+				<td>${s.user_weight}</td>
+				<td>${s.power_Level}</td>
+				<td>${s.basal_metabolism}</td>
 			</tr>
 		  </c:forEach>
 		  </tbody>
@@ -76,4 +81,5 @@ $(function(){
 		$("#form_id").submit();
 	});
 });
+</script>
 </html>

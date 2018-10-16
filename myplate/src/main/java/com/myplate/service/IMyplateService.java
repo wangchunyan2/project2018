@@ -7,6 +7,6 @@ import com.myplate.pojo.QueryConsumer;
 
 
 public interface IMyplateService {
-	public List<Map<String,String>> queryInfo(String createBy,String female,
+	List<QueryConsumer> queryInfo(String createBy,String female,
 			String power_level);
 }

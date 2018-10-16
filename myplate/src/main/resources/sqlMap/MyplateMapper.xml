@@ -1,12 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.myplate.dao.MyplateMapper">
-<select id="queryInfo" resultType="java.util.Map">
-     SELECT t.user_name,i.user_name as nickName,i.user_sex,i.user_height,i.user_weight,e.power_Level,e.basal_metabolism
-		FROM tb_mk_nutri_evaluate e,ts_common_user t,ts_person_info i
-		where e.create_by=t.id and e.create_by=t.id
-		and t.user_name=#{create_by} 
-		and i.user_sex=#{female} 
-		and e.power_Level=#{power_level};
+<select id="queryInfo" resultType="com.myplate.pojo.QueryConsumer">
+	SELECT
+	t.user_name,
+	i.user_name AS nickName,
+	(CASE i.user_sex
+	WHEN 1 THEN '男'
+	WHEN 2 THEN '女'
+	ELSE '人妖' END) AS  user_sex ,
+	i.user_height,
+	i.user_weight,
+	(CASE e.power_Level
+	WHEN 1 THEN '轻活力水平'
+	WHEN 2 THEN '中活力水平'
+	WHEN 2 THEN '重活力水平'
+	ELSE '超人' END) AS  power_Level ,
+	e.basal_metabolism
+	FROM
+	ts_common_user t,
+	ts_person_info i,
+	tb_mk_nutri_evaluate e
+	WHERE
+	i.create_by = t.id
+	AND e.create_by = i.id
+	<if test="userName !=null and userName !=''">
+		AND t.user_name like  CONCAT('%',#{userName},'%' )
+	</if>
+	<if test="userSex !=null and userSex !=''">
+		AND i.user_sex = #{userSex}
+	</if>
+	<if test="powerLevel !=null and powerLevel !=''">
+		AND e.power_Level = #{powerLevel};
+	</if>
+
   </select>
 </mapper>

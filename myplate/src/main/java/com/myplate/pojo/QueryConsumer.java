@@ -3,7 +3,7 @@ package com.myplate.pojo;
 public class QueryConsumer {
 	private String user_name;
 	private String nickname;
-	private String user_sex;;
+	private String user_sex;
 	private String user_height;
 	private String user_weight;
 	private String power_Level;

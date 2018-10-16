@@ -3,10 +3,10 @@ package com.myplate.dao;
 import java.util.List;
 import java.util.Map;
 
+import com.myplate.pojo.QueryConsumer;
 import org.apache.ibatis.annotations.Param;
 
 
 public interface MyplateMapper {
-	public List<Map<String,String>> queryInfo(@Param("create_by")String createBy,@Param("female")String female,
-			@Param("power_level")String power_level);
+	 List<QueryConsumer> queryInfo(@Param("userName")String userName, @Param("userSex")String userSex, @Param("powerLevel")String powerLevel);
 }
