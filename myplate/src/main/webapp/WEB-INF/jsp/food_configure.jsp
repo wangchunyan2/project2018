@@ -22,12 +22,13 @@
 	<div class="content-header">
 		<h4 class="content-header-text">请选择体力活力水平</h4>
 	</div>
+	<form id="next_form" method="post" action="${webcontext}/foodConfigure">
 	<div class="content-container">
 		<div class="row">
 			<div class="row-col">
 				<label class="row-label">
 					<div class="row-label-radio">
-					<input type="radio" value="1" name="power_level" id="power_level1" checked="checked">&nbsp;轻活力水平&nbsp;&nbsp;
+					<input type="radio" value="1" name="powerLevel" id="power_level1" checked="checked">&nbsp;轻活力水平&nbsp;&nbsp;
 						<!-- <a href="/myplate/basalMetabolism?powerLevel=1">轻活力水平</a> -->
 					<img class="mt-tip-icon" src="${webcontext}/image/question.png">
 					</div>
@@ -39,7 +40,7 @@
 			<div class="row-col">
 				<label class="row-label">
 					<div class="row-label-radio">
-					<input type="radio" value="2" name="power_level" id="power_level2">&nbsp;中活力水平&nbsp;&nbsp;
+					<input type="radio" value="2" name="powerLevel" id="power_level2">&nbsp;中活力水平&nbsp;&nbsp;
 						<!-- <a href="/myplate/basalMetabolism?powerLevel=2">&nbsp;&nbsp;中活力水平</a> -->
 					<img class="mt-tip-icon" src="${webcontext}/image/question.png">
 					</div>
@@ -51,7 +52,7 @@
 			<div class="row-col">
 				<label class="row-label">
 					<div class="row-label-radio">
-					<input type="radio" value="3" name="power_level" id="power_level3">&nbsp;重活力水平&nbsp;&nbsp;
+					<input type="radio" value="3" name="powerLevel" id="power_level3">&nbsp;重活力水平&nbsp;&nbsp;
 						<!-- <a href="/myplate/basalMetabolism?powerLevel=3">&nbsp;&nbsp;重活力水平</a> -->
 					<img class="mt-tip-icon" src="${webcontext}/image/question.png">
 					</div>
@@ -60,7 +61,7 @@
 			</div>
 		</div>
 		</div>
-		
+	</form>
 		<div class="content-header">
 			<h4 class="content-header-text">基础能量需求</h4>
 		</div>
@@ -100,7 +101,6 @@
 		<div class="content-container">
 			<input type="button" class="content-next" id="next"value="下一步">
 		</div>
-		<form id="next_form" method="post" action="${webcontext}/foodConfigure"></form>
 		<form id="metabolism_form" method="post" action="${webcontext}/basalMetabolism"></form>
 	
 </div>
@@ -113,9 +113,10 @@ $(function(){
 	$("#next").click(function(){
 		$("#next_form").submit();
 	});
-	$('input[type=radio][name=power_level]').change(function() {
+	$('input[type=radio][name=powerLevel]').change(function() {
 		//$("#metabolism_form").submit();
 		var power_level = $('input:radio:checked').val();
+		debugger;
 		console.log(power_level);
 		 $.ajax({
            type: "post",

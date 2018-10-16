@@ -67,11 +67,11 @@ public class MyplateController {
 		return "/nutr_evaluate";
 	}
 
-	@RequestMapping(value="/{formName}")
+	/*@RequestMapping(value="/{formName}")
 	public String loginForm(@PathVariable String formName){
 		// 动态跳转页面
 		return formName;
-	}
+	}*/
 	//管理员页面
 	@RequestMapping("/toAdminPage")
 	public ModelAndView toAdminPage(HttpServletRequest request,HttpSession session){
@@ -108,7 +108,7 @@ public class MyplateController {
 	@RequestMapping("/foodConfigure")
 	public String foodConfigure(HttpServletRequest request, String powerLevel){
 		TsPersonInfo tsPersonInfo = (TsPersonInfo)request.getSession().getAttribute("tsPersonInfo");
-		powerLevel = request.getParameter("powerLevel");
+		//powerLevel = request.getParameter("powerLevel");
 		TbMkNutriEvaluate tbMkNutriEvaluate =new TbMkNutriEvaluate();
 		tbMkNutriEvaluate.setPowerLevel(powerLevel);
 		myplateService.save(request,tsPersonInfo,tbMkNutriEvaluate);
@@ -153,7 +153,7 @@ public class MyplateController {
 	@RequestMapping("/basalMetabolism")
 	@ResponseBody
 	public BasalMetabolism basalMetabolism(HttpServletRequest request,String powerLevel){
-		powerLevel=request.getParameter("powerLevel");
+		//powerLevel=request.getParameter("powerLevel");
 		TsPersonInfo tsPersonInfo = (TsPersonInfo)request.getSession().getAttribute("tsPersonInfo");
 		BasalMetabolism metabolism = myplateService.basalMetabolism(request, tsPersonInfo, powerLevel);
 		return  metabolism;
