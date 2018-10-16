@@ -11,29 +11,27 @@
 <head>
 <%-- <%@ include file="common.jsp"%> --%>
 <c:set var="webcontext" value="${pageContext.request.contextPath}" />
-<link type="text/css" rel="stylesheet" href="${webcontext}/css/admin.css"></link>
+<link type="text/css" rel="stylesheet" href="${webcontext}/css/admin.css"/>
 <script type="text/javascript" src="${webcontext}/js/jquery.min.js"></script>
-
-
 <title>膳食营养评价系统myplate</title>
 </head>
-<body style="background-color: #f3f3f3; margin: 0; padding: 0;">
+<body  style="background-color: #f3f3f3; margin: 0; padding: 0;">
 <div class="content">
 <div class="content-detail">
-<form action="${webcontext}/queryInfo" method="post" id="form_id">
-		<h1 class="content-header-text"><%--我的膳食营养评价系统-后台管理页面--%></h1>
+<form action="${webcontext}/queryInfo" method="post" id="form_id" name="form">
+		<h1 class="content-header-text">我的膳食营养评价系统-后台管理页面></h1>
 		<div class="content-search">
 				<lable class="row-left">创建人：</lable>
 				<input type="text" class="content-input" name="create_by">
 				<lable class="row-center">性别：</lable>
 				<select class="content-row-select" name="female"> 
-					<option value="">请选择</option>
+					<option value="">全部</option>
 					<option value="1">男</option>
 					<option value="2">女</option> 
 				</select> 
 				<lable class="row-right">活力水平：</lable>
 				<select class="content-row-select" name="power_level"> 
-					<option value="">请选择</option>
+					<option value="">全部</option>
 					<option value="1">轻活力水平</option> 
 					<option value="2">中活力水平</option> 
 					<option value="3">重活力水平</option> 
@@ -43,7 +41,6 @@
 				<input type="submit" class="content-button" id="query" value="查询">
 		</div>
 </form>
-<form action="">
 	<div class="content-result">
 		<table class="content-table" align="center">
 		  <thead>
@@ -68,14 +65,25 @@
 			</tr>
 		  </c:forEach>
 		  </tbody>
-		  
 		</table>
-	</div> 
-</form>
+	</div>
 </div>
 </div>
+<input>
 </body>
 <script type="text/javascript">
+   /* var  check = true;
+    window.onload = function() {
+         debugger;
+        if(check){
+            document.getElementById("query").click();
+            check = false;
+            return true;
+		}else {
+            return false;
+		}
+
+    }*/
 $(function(){
 	$("#query").click(function(){
 		$("#form_id").submit();
