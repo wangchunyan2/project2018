@@ -4,6 +4,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.websocket.server.PathParam;
 
+import com.myplate.pojo.QueryConsumer;
+import com.myplate.service.IMyplateService;
 import com.myplate.utils.MyPlateException;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +18,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.myplate.pojo.User;
 import com.myplate.service.IUserService;
+import org.springframework.web.servlet.ModelAndView;
+
+import java.util.List;
 
 @Controller
 @RequestMapping(value="/login")
@@ -24,8 +29,11 @@ public class LoginController {
 	private IUserService userService;
 	private Logger log = Logger.getLogger(LoginController.class);
 
+	@Autowired
+	private IMyplateService imyplateService;
+
 	@RequestMapping("/userLogin")
-	public String login(HttpServletRequest request,Model model){
+	public ModelAndView login(HttpServletRequest request, Model model){
 		try {
 			String userName = request.getParameter("userName");
 			String pwd = request.getParameter("password");
@@ -36,9 +44,15 @@ public class LoginController {
 					request.getSession().setAttribute("userName",u.getUserName());
 					request.getSession().setAttribute("id",u.getId());
 					if("admin".equals(userName)){
-						return "/admin";
+						ModelAndView mv = new ModelAndView();
+						List<QueryConsumer> queryList = imyplateService.queryInfo("","","");
+						mv.addObject("queryList",queryList);
+						mv.setViewName("/admin");
+						return mv;
 					}
-					return "/buildMenu";
+					ModelAndView mv = new ModelAndView();
+					mv.setViewName("/buildMenu");
+					return mv;
 				}else{
 					throw new Exception("用户名或密码错误！");
 				}
@@ -47,7 +61,9 @@ public class LoginController {
 			request.setAttribute("error_msg",e.getMessage());
 			e.printStackTrace();
 		}
-		return "/index";
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("/index");
+		return mv;
 	}
 	@RequestMapping(value="/validateUser",method=RequestMethod.POST)
 	@ResponseBody

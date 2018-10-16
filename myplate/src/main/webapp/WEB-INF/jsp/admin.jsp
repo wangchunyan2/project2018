@@ -72,22 +72,8 @@
 <input>
 </body>
 <script type="text/javascript">
-   /* var  check = true;
-    window.onload = function() {
-         debugger;
-        if(check){
-            document.getElementById("query").click();
-            check = false;
-            return true;
-		}else {
-            return false;
-		}
 
-    }*/
 $(function(){
-	$("#query").click(function(){
-		$("#form_id").submit();
-	});
 });
 </script>
 </html>
